@@ -1,4 +1,3 @@
-from email import message
 from typing import Annotated
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
@@ -35,13 +34,13 @@ def create_supplier_agent(supplier_id: str):
 
     # Nodes
 
-    def agent(state: SupplierAgentState): 
+    def agent(state: SupplierAgentState):
         """LLM reasoning node."""
-        meessages = state["messages"]
-        
+        messages = state["messages"]
+
         if not messages or not isinstance(messages[0], SystemMessage):
             messages = [SystemMessage(content=system_prompt)] + messages
-        
+
         response = llm_with_tools.invoke(messages)
         return {"messages": [response]}
 
