@@ -61,3 +61,55 @@ class A2AMessage(BaseModel):
     message_type: MessageType
     payload: dict = {}
     in_reply_to: Optional[str] = None
+
+class BOMItem(BaseModel):
+    part_name: str
+    quantity: int
+    specs: str = ""
+    category: str = ""
+
+class BillOfMaterials(BaseModel):
+    product: str
+    intent: str
+    budget: float = 0.0
+    currency: str = "EUR"
+    deadline: str = ""
+    delivery_location: str = ""
+    items: list[BOMItem] = []
+
+class QuoteItem(BaseModel):
+    part_name: str
+    unit_price: float
+    quantity: int
+    total_price: float = 0.0
+    lead_time_days: int = 0
+    in_stock: bool = True
+
+class Quote(BaseModel):
+    supplier_name: str
+    items: list[QuoteItem] = []
+    total_cost: float = 0.0
+    currency: str = "EUR"
+    shipping_origin: str = ""
+
+class LogisticsPlan(BaseModel):
+    provider: str
+    routes: list[dict] = []
+    total_cost: float = 0.0
+    estimated_arrival: str = ""
+
+class ComplianceResult(BaseModel):
+    overall_status: str = "PASS"
+    checks: list[dict] = []
+    warnings: list[str] = []
+
+class ExecutionPlan(BaseModel):
+    status: str = "READY"
+    intent: str = ""
+    total_cost: float = 0.0
+    budget: float = 0.0
+    orders: list[dict] = []
+    logistics: dict = {}
+    compliance: dict = {}
+    agents_involved: int = 0
+    messages_exchanged: int = 0
