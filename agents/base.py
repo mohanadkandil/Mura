@@ -8,6 +8,9 @@ This module provides:
 - A2A message helpers
 """
 
+from dotenv import load_dotenv
+load_dotenv()  
+
 from typing import TypedDict, Annotated, Any
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
