@@ -1,0 +1,311 @@
+{
+  "_comment": "Mock supply chain data for PACT hackathon demo",
+
+  "suppliers": {
+    "techparts-global": {
+      "name": "TechParts Global",
+      "region": "US",
+      "country": "USA",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 8,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.94,
+        "total_transactions": 150,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-TP-2024"}
+      ],
+      "catalog": {
+        "brushless_motor": {
+          "part_name": "Brushless Motor 2300KV",
+          "category": "propulsion",
+          "unit_price": 45.00,
+          "specs": "2300KV, 28mm stator, racing grade",
+          "stock": 500,
+          "lead_time_days": 3
+        },
+        "esc": {
+          "part_name": "ESC 30A BLHeli",
+          "category": "electronics",
+          "unit_price": 28.00,
+          "specs": "30A continuous, BLHeli_32, 2-6S LiPo",
+          "stock": 300,
+          "lead_time_days": 3
+        },
+        "flight_controller": {
+          "part_name": "Flight Controller F7",
+          "category": "electronics",
+          "unit_price": 85.00,
+          "specs": "STM32 F7, Betaflight, OSD, Blackbox",
+          "stock": 100,
+          "lead_time_days": 4
+        },
+        "battery": {
+          "part_name": "LiPo Battery 1500mAh 4S",
+          "category": "power",
+          "unit_price": 42.00,
+          "specs": "1500mAh, 4S 14.8V, 100C discharge",
+          "stock": 200,
+          "lead_time_days": 5
+        },
+        "vtx": {
+          "part_name": "Video Transmitter 600mW",
+          "category": "fpv",
+          "unit_price": 38.00,
+          "specs": "5.8GHz, 600mW, 40 channels",
+          "stock": 150,
+          "lead_time_days": 3
+        },
+        "camera": {
+          "part_name": "FPV Camera 1200TVL",
+          "category": "fpv",
+          "unit_price": 32.00,
+          "specs": "1200TVL, 2.1mm lens, CMOS",
+          "stock": 180,
+          "lead_time_days": 3
+        }
+      }
+    },
+
+    "droneparts-eu": {
+      "name": "DroneParts Direct EU",
+      "region": "EU",
+      "country": "Poland",
+      "currency": "EUR",
+      "avg_lead_time_days": 3,
+      "max_discount_pct": 15,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.89,
+        "total_transactions": 80,
+        "dispute_rate": 0.03
+      },
+      "certifications": [
+        {"authority": "EU", "certification": "CE", "cert_id": "CE-DP-2024"},
+        {"authority": "TUV", "certification": "Quality Tested", "cert_id": "TUV-DP-2024"}
+      ],
+      "catalog": {
+        "carbon_frame": {
+          "part_name": "Carbon Fiber Frame 5 inch",
+          "category": "frame",
+          "unit_price": 65.00,
+          "specs": "5 inch, 3K carbon, 220mm wheelbase, racing geometry",
+          "stock": 120,
+          "lead_time_days": 2
+        },
+        "propeller_set": {
+          "part_name": "Propeller Set 5x4.5",
+          "category": "propulsion",
+          "unit_price": 12.00,
+          "specs": "5x4.5 triblade, polycarbonate, set of 4",
+          "stock": 800,
+          "lead_time_days": 1
+        },
+        "brushless_motor": {
+          "part_name": "Brushless Motor 2400KV",
+          "category": "propulsion",
+          "unit_price": 52.00,
+          "specs": "2400KV, EU sourced, premium bearings",
+          "stock": 200,
+          "lead_time_days": 2
+        },
+        "antenna": {
+          "part_name": "FPV Antenna RHCP",
+          "category": "fpv",
+          "unit_price": 18.00,
+          "specs": "5.8GHz RHCP, MMCX connector",
+          "stock": 300,
+          "lead_time_days": 1
+        },
+        "battery_strap": {
+          "part_name": "Battery Strap Set",
+          "category": "accessories",
+          "unit_price": 8.00,
+          "specs": "Non-slip rubberized, 20mm width, 2 pack",
+          "stock": 500,
+          "lead_time_days": 1
+        }
+      }
+    },
+
+    "shenzhen-tech": {
+      "name": "ShenzhenTech Components",
+      "region": "Asia",
+      "country": "China",
+      "currency": "EUR",
+      "avg_lead_time_days": 14,
+      "max_discount_pct": 25,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.78,
+        "total_transactions": 500,
+        "dispute_rate": 0.08
+      },
+      "certifications": [
+        {"authority": "China", "certification": "CCC", "cert_id": "CCC-ST-2024"}
+      ],
+      "_comment": "Cheapest prices but longest shipping. Everything in stock.",
+      "catalog": {
+        "brushless_motor": {
+          "part_name": "Brushless Motor 2300KV",
+          "category": "propulsion",
+          "unit_price": 22.00,
+          "specs": "2300KV, budget racing motor",
+          "stock": 5000,
+          "lead_time_days": 12
+        },
+        "esc": {
+          "part_name": "ESC 30A",
+          "category": "electronics",
+          "unit_price": 14.00,
+          "specs": "30A, basic firmware, 2-4S",
+          "stock": 3000,
+          "lead_time_days": 12
+        },
+        "flight_controller": {
+          "part_name": "Flight Controller F4",
+          "category": "electronics",
+          "unit_price": 38.00,
+          "specs": "STM32 F4, Betaflight compatible",
+          "stock": 800,
+          "lead_time_days": 12
+        },
+        "carbon_frame": {
+          "part_name": "Carbon Frame 5 inch",
+          "category": "frame",
+          "unit_price": 28.00,
+          "specs": "5 inch, 3K carbon, budget build",
+          "stock": 2000,
+          "lead_time_days": 12
+        },
+        "battery": {
+          "part_name": "LiPo Battery 1300mAh 4S",
+          "category": "power",
+          "unit_price": 18.00,
+          "specs": "1300mAh, 4S, 75C discharge",
+          "stock": 1500,
+          "lead_time_days": 14
+        },
+        "propeller_set": {
+          "part_name": "Propeller Set 5x4.3",
+          "category": "propulsion",
+          "unit_price": 4.00,
+          "specs": "5x4.3, plastic, set of 4",
+          "stock": 10000,
+          "lead_time_days": 10
+        },
+        "vtx": {
+          "part_name": "Video Transmitter 400mW",
+          "category": "fpv",
+          "unit_price": 15.00,
+          "specs": "5.8GHz, 400mW, 32 channels",
+          "stock": 600,
+          "lead_time_days": 12
+        },
+        "camera": {
+          "part_name": "FPV Camera 800TVL",
+          "category": "fpv",
+          "unit_price": 12.00,
+          "specs": "800TVL, 2.5mm lens",
+          "stock": 900,
+          "lead_time_days": 12
+        },
+        "receiver": {
+          "part_name": "RC Receiver FrSky Compatible",
+          "category": "control",
+          "unit_price": 16.00,
+          "specs": "8 channel, FrSky D8/D16 mode",
+          "stock": 400,
+          "lead_time_days": 12
+        },
+        "antenna": {
+          "part_name": "FPV Antenna Dipole",
+          "category": "fpv",
+          "unit_price": 5.00,
+          "specs": "5.8GHz dipole, basic",
+          "stock": 2000,
+          "lead_time_days": 10
+        }
+      }
+    }
+  },
+
+  "logistics_providers": {
+    "dhl-express": {
+      "name": "DHL Express",
+      "type": "air",
+      "base_cost": 25.00,
+      "cost_per_kg": 8.00,
+      "speed_days": 3,
+      "regions": ["EU", "US", "Asia"],
+      "tracking": true
+    },
+    "maersk-sea": {
+      "name": "Maersk Shipping",
+      "type": "sea",
+      "base_cost": 50.00,
+      "cost_per_kg": 1.50,
+      "speed_days": 21,
+      "regions": ["Asia", "EU", "US"],
+      "tracking": true,
+      "_comment": "Cheapest for heavy/bulk, but slow"
+    },
+    "eu-ground": {
+      "name": "EU Ground Express",
+      "type": "ground",
+      "base_cost": 15.00,
+      "cost_per_kg": 3.00,
+      "speed_days": 5,
+      "regions": ["EU"],
+      "tracking": true
+    }
+  },
+
+  "compliance_rules": {
+    "CE": {
+      "name": "CE Marking",
+      "region": "EU",
+      "required_for": ["electronics", "power", "fpv"],
+      "description": "EU conformity marking for product safety"
+    },
+    "battery_shipping": {
+      "name": "Lithium Battery Regulations",
+      "region": "global",
+      "required_for": ["power"],
+      "description": "UN38.3 certification required for lithium batteries in air freight",
+      "restrictions": ["Cannot ship via passenger aircraft", "Must be <100Wh per cell"]
+    },
+    "rf_regulations": {
+      "name": "RF Transmission Rules",
+      "region": "EU",
+      "required_for": ["fpv", "control"],
+      "description": "Video transmitters must not exceed 25mW without license, 5.8GHz band restrictions",
+      "max_power_mw": 25
+    },
+    "drone_registration": {
+      "name": "EU Drone Registration",
+      "region": "EU",
+      "required_for": ["complete_drone"],
+      "description": "Drones over 250g require operator registration",
+      "weight_threshold_g": 250
+    }
+  },
+
+  "demo_bom": {
+    "_comment": "Fallback BOM for racing drone if no GPT API key",
+    "product": "Racing Drone 5 inch",
+    "items": [
+      {"part_name": "brushless_motor", "quantity": 4, "category": "propulsion"},
+      {"part_name": "esc", "quantity": 4, "category": "electronics"},
+      {"part_name": "flight_controller", "quantity": 1, "category": "electronics"},
+      {"part_name": "carbon_frame", "quantity": 1, "category": "frame"},
+      {"part_name": "battery", "quantity": 2, "category": "power"},
+      {"part_name": "propeller_set", "quantity": 2, "category": "propulsion"},
+      {"part_name": "vtx", "quantity": 1, "category": "fpv"},
+      {"part_name": "camera", "quantity": 1, "category": "fpv"}
+    ]
+  }
+}
