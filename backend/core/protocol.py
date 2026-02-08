@@ -33,11 +33,22 @@ class Certification(BaseModel):
     cert_id: str = ""
     valid_until: str = ""
 
+class TrustLevel(str, Enum):
+    """ZTAA (Zero Trust Agentic Access) trust levels from NANDA"""
+    SELF_DECLARED = "self_declared"      # Agent claims capabilities (lowest)
+    PEER_ATTESTED = "peer_attested"      # Other agents vouch for this agent (medium)
+    AUTHORITY_VERIFIED = "authority_verified"  # Certified by authority (highest)
+
+
 class TrustProfile(BaseModel):
     verified: bool = False
+    trust_level: TrustLevel = TrustLevel.SELF_DECLARED  # ZTAA level
     reputation_score: float = Field(default=0.5, ge=0.0, le=1.0)
     total_transactions: int = 0
+    successful_transactions: int = 0
     dispute_rate: float = 0.0
+    last_active: str = ""  # ISO timestamp
+    peer_attestations: int = 0  # Number of agents that vouch for this one
 
 class AgentFacts(BaseModel):
     agent_id: str = Field(default_factory=lambda: str(uuid.uuid4())[:8])

@@ -1,0 +1,56 @@
+{
+  "droneparts-eu": {
+    "5": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    },
+    "10": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    },
+    "15": {
+      "tries": 8,
+      "total_received": 72.0,
+      "successes": 0
+    },
+    "20": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    },
+    "25": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    }
+  },
+  "shenzhen-tech": {
+    "5": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    },
+    "10": {
+      "tries": 2,
+      "total_received": 12.0,
+      "successes": 0
+    },
+    "15": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    },
+    "20": {
+      "tries": 6,
+      "total_received": 72.0,
+      "successes": 0
+    },
+    "25": {
+      "tries": 0,
+      "total_received": 0,
+      "successes": 0
+    }
+  }
+}

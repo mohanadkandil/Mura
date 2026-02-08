@@ -1,10 +1,30 @@
-# Python-generated files
+# Python
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+*.egg-info/
 
-# Virtual environments
-.venv
+# Node
+node_modules/
+.next/
+out/
+dist/
+.env.local
+.env*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Claude
+.claude/
+
+# Misc
+*.log
+.cache/

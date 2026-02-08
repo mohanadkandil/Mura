@@ -21,6 +21,7 @@ from core.protocol import (
     A2AMessage,
     MessageType,
     TrustProfile,
+    TrustLevel,
     Certification,
 )
 import json
@@ -300,12 +301,50 @@ def create_supplier_facts(supplier_id: str) -> AgentFacts:
         ],
         trust=TrustProfile(
             verified=trust_data.get("verified", False),
+            # Determine ZTAA trust level based on certifications and verification
+            trust_level=_determine_trust_level(data),
             reputation_score=trust_data.get("reputation_score", 0.5),
             total_transactions=trust_data.get("total_transactions", 0),
+            successful_transactions=int(trust_data.get("total_transactions", 0) * (1 - trust_data.get("dispute_rate", 0.0))),
             dispute_rate=trust_data.get("dispute_rate", 0.0),
+            peer_attestations=trust_data.get("peer_attestations", _calculate_peer_attestations(trust_data)),
         ),
         endpoint=f"/agents/{supplier_id}",
     )
+
+
+def _determine_trust_level(supplier_data: dict) -> TrustLevel:
+    """
+    Determine ZTAA trust level based on supplier data.
+
+    - AUTHORITY_VERIFIED: Has ISO or major authority certifications
+    - PEER_ATTESTED: Verified by platform with good reputation
+    - SELF_DECLARED: New or unverified supplier
+    """
+    certs = supplier_data.get("certifications", [])
+    trust = supplier_data.get("trust", {})
+
+    # Check for authority certifications (ISO, CE from official bodies)
+    authority_certs = ["ISO", "CE", "TUV", "UL"]
+    has_authority_cert = any(
+        cert.get("authority", "").upper() in authority_certs
+        for cert in certs
+    )
+
+    if has_authority_cert and trust.get("verified", False):
+        return TrustLevel.AUTHORITY_VERIFIED
+    elif trust.get("verified", False) and trust.get("total_transactions", 0) > 50:
+        return TrustLevel.PEER_ATTESTED
+    else:
+        return TrustLevel.SELF_DECLARED
+
+
+def _calculate_peer_attestations(trust_data: dict) -> int:
+    """Calculate simulated peer attestations based on transaction history."""
+    transactions = trust_data.get("total_transactions", 0)
+    dispute_rate = trust_data.get("dispute_rate", 0.0)
+    # Roughly 10% of successful transactions result in attestations
+    return int(transactions * (1 - dispute_rate) * 0.1)
 
 
 def create_all_supplier_facts() -> list[AgentFacts]:

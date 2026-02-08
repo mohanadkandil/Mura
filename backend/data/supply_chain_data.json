@@ -307,5 +307,189 @@
       {"part_name": "vtx", "quantity": 1, "category": "fpv"},
       {"part_name": "camera", "quantity": 1, "category": "fpv"}
     ]
+  },
+
+  "buyers": {
+    "munich-racing": {
+      "name": "Munich Drone Racing GmbH",
+      "region": "EU",
+      "country": "Germany",
+      "preferences": {
+        "preferred_region": "EU",
+        "max_acceptable_lead_time_days": 10,
+        "price_sensitivity": "medium",
+        "quality_priority": "high"
+      },
+      "decision_thresholds": {
+        "auto_approve_under": 1000,
+        "review_required_under": 10000,
+        "executive_approval_above": 10000
+      },
+      "order_history": [
+        {
+          "date": "2024-01-15",
+          "supplier": "techparts-global",
+          "items": [{"part": "brushless_motor", "qty": 20}],
+          "total": 900,
+          "discount_received": 5,
+          "delivery_days": 5,
+          "on_time": true
+        },
+        {
+          "date": "2024-01-22",
+          "supplier": "techparts-global",
+          "items": [{"part": "esc", "qty": 20}],
+          "total": 560,
+          "discount_received": 5,
+          "delivery_days": 4,
+          "on_time": true
+        },
+        {
+          "date": "2024-02-01",
+          "supplier": "shenzhen-tech",
+          "items": [{"part": "brushless_motor", "qty": 50}],
+          "total": 880,
+          "discount_received": 20,
+          "delivery_days": 18,
+          "on_time": false,
+          "notes": "4 days late"
+        },
+        {
+          "date": "2024-02-10",
+          "supplier": "techparts-global",
+          "items": [{"part": "brushless_motor", "qty": 25}],
+          "total": 1125,
+          "discount_received": 8,
+          "delivery_days": 5,
+          "on_time": true
+        },
+        {
+          "date": "2024-02-15",
+          "supplier": "droneparts-eu",
+          "items": [{"part": "carbon_frame", "qty": 15}],
+          "total": 975,
+          "discount_received": 10,
+          "delivery_days": 3,
+          "on_time": true
+        },
+        {
+          "date": "2024-02-20",
+          "supplier": "shenzhen-tech",
+          "items": [
+            {"part": "esc", "qty": 40},
+            {"part": "propeller_set", "qty": 100}
+          ],
+          "total": 960,
+          "discount_received": 22,
+          "delivery_days": 16,
+          "on_time": false,
+          "notes": "2 days late"
+        },
+        {
+          "date": "2024-03-01",
+          "supplier": "techparts-global",
+          "items": [{"part": "flight_controller", "qty": 10}],
+          "total": 850,
+          "discount_received": 8,
+          "delivery_days": 4,
+          "on_time": true
+        }
+      ],
+      "spend_analytics": {
+        "total_ytd": 6250,
+        "by_supplier": {
+          "techparts-global": {"total": 3435, "orders": 4, "avg_discount": 6.5},
+          "shenzhen-tech": {"total": 1840, "orders": 2, "avg_discount": 21},
+          "droneparts-eu": {"total": 975, "orders": 1, "avg_discount": 10}
+        },
+        "by_category": {
+          "propulsion": 2905,
+          "electronics": 1410,
+          "frame": 975,
+          "accessories": 960
+        }
+      },
+      "supplier_performance": {
+        "techparts-global": {
+          "orders": 4,
+          "on_time_rate": 1.0,
+          "avg_discount": 6.5,
+          "quality_issues": 0
+        },
+        "shenzhen-tech": {
+          "orders": 2,
+          "on_time_rate": 0.0,
+          "avg_discount": 21,
+          "quality_issues": 0,
+          "notes": "Always late but good discounts"
+        },
+        "droneparts-eu": {
+          "orders": 1,
+          "on_time_rate": 1.0,
+          "avg_discount": 10,
+          "quality_issues": 0
+        }
+      },
+      "pain_points": [
+        {"type": "late_delivery", "supplier": "shenzhen-tech", "frequency": "100%", "impact": "high"},
+        {"type": "limited_discount", "supplier": "techparts-global", "detail": "Never exceeds 8%"}
+      ],
+      "opportunities": [
+        {
+          "type": "cost_saving",
+          "detail": "Motors from TechParts cost €45. ShenzhenTech offers €22 (51% savings)",
+          "risk": "ShenzhenTech has 0% on-time rate",
+          "recommendation": "Use ShenzhenTech for non-urgent stock replenishment only"
+        },
+        {
+          "type": "volume_discount",
+          "detail": "Consolidate motor orders to hit 100 units/month for bulk pricing",
+          "potential_savings": "Additional 5-10% discount"
+        },
+        {
+          "type": "supplier_diversification",
+          "detail": "55% spend concentrated with TechParts",
+          "risk": "Single supplier dependency",
+          "recommendation": "Qualify DroneParts EU as backup for electronics"
+        }
+      ]
+    }
+  },
+
+  "rl_stats": {
+    "_comment": "Learned negotiation statistics from past interactions",
+    "techparts-global": {
+      "negotiations": 47,
+      "avg_discount_achieved": 7.2,
+      "max_discount_seen": 8,
+      "best_opening_ask": 15,
+      "patterns": [
+        "Never exceeds 8% regardless of order size",
+        "Responds quickly, professional",
+        "No bulk discount advantage"
+      ]
+    },
+    "shenzhen-tech": {
+      "negotiations": 89,
+      "avg_discount_achieved": 21.5,
+      "max_discount_seen": 25,
+      "best_opening_ask": 25,
+      "patterns": [
+        "Very flexible on price",
+        "Bulk orders get better rates",
+        "Always counter first, then accept"
+      ]
+    },
+    "droneparts-eu": {
+      "negotiations": 23,
+      "avg_discount_achieved": 11.2,
+      "max_discount_seen": 15,
+      "best_opening_ask": 18,
+      "patterns": [
+        "Moderate flexibility",
+        "Responds well to loyalty argument",
+        "Faster shipping can be negotiated"
+      ]
+    }
   }
 }
