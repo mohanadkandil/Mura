@@ -53,7 +53,7 @@ interface AgentInfo {
 function getAgentInfo(agentName: string, supplierCount: { count: number }): AgentInfo {
   const lower = agentName.toLowerCase();
 
-  if (lower.includes("orchestrator") || lower.includes("pact") || lower === "orchestrator") {
+  if (lower.includes("orchestrator") || lower.includes("mura") || lower === "orchestrator") {
     return { id: "orchestrator", type: "orchestrator", name: "MURA Core" };
   }
   if (lower.includes("logistics") || lower === "logistics") {
