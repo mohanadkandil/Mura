@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mura-sdk"
-version = "0.1.0"
+version = "0.1.1"
 description = "SDK for MURA - Supply Chain Agent Coordination Network"
 readme = "README.md"
 license = "MIT"
 authors = [
-    { name = "MURA Team", email = "team@mura.dev" }
+    { name = "Mohanad Kandil", email = "mohanadmkandil@gmail.com" }
 ]
 keywords = ["supply-chain", "procurement", "ai-agents", "nanda", "a2a"]
 classifiers = [

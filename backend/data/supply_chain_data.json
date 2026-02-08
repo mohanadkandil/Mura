@@ -1,5 +1,5 @@
 {
-  "_comment": "Mock supply chain data for PACT hackathon demo",
+  "_comment": "Mock supply chain data for MURA hackathon demo",
 
   "suppliers": {
     "techparts-global": {
@@ -230,6 +230,1332 @@
           "lead_time_days": 10
         }
       }
+    },
+
+    "skyhigh-drones": {
+      "name": "SkyHigh Drone Systems",
+      "region": "US",
+      "country": "USA",
+      "currency": "EUR",
+      "avg_lead_time_days": 4,
+      "max_discount_pct": 12,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.92,
+        "total_transactions": 220,
+        "dispute_rate": 0.01
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-SH-2024"},
+        {"authority": "FAA", "certification": "Part 107 Compliant", "cert_id": "FAA-SH-2024"}
+      ],
+      "catalog": {
+        "brushless_motor": {
+          "part_name": "Brushless Motor 2500KV Pro",
+          "category": "propulsion",
+          "unit_price": 58.00,
+          "specs": "2500KV, titanium shaft, racing champion series",
+          "stock": 350,
+          "lead_time_days": 3
+        },
+        "esc": {
+          "part_name": "ESC 45A Premium",
+          "category": "electronics",
+          "unit_price": 42.00,
+          "specs": "45A burst, BLHeli_32 Pro, 2-6S LiPo",
+          "stock": 180,
+          "lead_time_days": 3
+        },
+        "flight_controller": {
+          "part_name": "Flight Controller H7 Elite",
+          "category": "electronics",
+          "unit_price": 125.00,
+          "specs": "STM32 H7, dual gyro, GPS ready",
+          "stock": 75,
+          "lead_time_days": 4
+        },
+        "battery": {
+          "part_name": "LiPo Battery 1800mAh 6S",
+          "category": "power",
+          "unit_price": 68.00,
+          "specs": "1800mAh, 6S 22.2V, 120C discharge",
+          "stock": 120,
+          "lead_time_days": 4
+        },
+        "vtx": {
+          "part_name": "Video Transmitter 1W Pro",
+          "category": "fpv",
+          "unit_price": 75.00,
+          "specs": "5.8GHz, 1W, smart audio, MMCX",
+          "stock": 90,
+          "lead_time_days": 3
+        },
+        "camera": {
+          "part_name": "FPV Camera 1500TVL HDR",
+          "category": "fpv",
+          "unit_price": 48.00,
+          "specs": "1500TVL, HDR, low latency",
+          "stock": 140,
+          "lead_time_days": 3
+        },
+        "carbon_frame": {
+          "part_name": "Carbon Frame 5 inch Pro",
+          "category": "frame",
+          "unit_price": 95.00,
+          "specs": "5 inch, T700 carbon, race geometry",
+          "stock": 80,
+          "lead_time_days": 4
+        }
+      }
+    },
+
+    "flytech-asia": {
+      "name": "FlyTech Asia Pacific",
+      "region": "Asia",
+      "country": "Taiwan",
+      "currency": "EUR",
+      "avg_lead_time_days": 8,
+      "max_discount_pct": 18,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.85,
+        "total_transactions": 340,
+        "dispute_rate": 0.04
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 14001", "cert_id": "ISO-14001-FT-2024"},
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-FT-2024"}
+      ],
+      "catalog": {
+        "brushless_motor": {
+          "part_name": "Brushless Motor 2200KV",
+          "category": "propulsion",
+          "unit_price": 35.00,
+          "specs": "2200KV, efficient cruiser",
+          "stock": 800,
+          "lead_time_days": 6
+        },
+        "esc": {
+          "part_name": "ESC 35A Smart",
+          "category": "electronics",
+          "unit_price": 24.00,
+          "specs": "35A, smart features, telemetry",
+          "stock": 450,
+          "lead_time_days": 6
+        },
+        "flight_controller": {
+          "part_name": "Flight Controller F7 GPS",
+          "category": "electronics",
+          "unit_price": 95.00,
+          "specs": "STM32 F7, integrated GPS, compass",
+          "stock": 120,
+          "lead_time_days": 7
+        },
+        "battery": {
+          "part_name": "LiPo Battery 2200mAh 4S",
+          "category": "power",
+          "unit_price": 52.00,
+          "specs": "2200mAh, 4S, long range",
+          "stock": 280,
+          "lead_time_days": 8
+        },
+        "gps_module": {
+          "part_name": "GPS Module M10",
+          "category": "navigation",
+          "unit_price": 28.00,
+          "specs": "M10 chipset, dual band",
+          "stock": 200,
+          "lead_time_days": 5
+        }
+      }
+    },
+
+    "keyboard-masters": {
+      "name": "Keyboard Masters GmbH",
+      "region": "EU",
+      "country": "Germany",
+      "currency": "EUR",
+      "avg_lead_time_days": 3,
+      "max_discount_pct": 10,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.96,
+        "total_transactions": 890,
+        "dispute_rate": 0.01
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-KM-2024"},
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-KM-2024"},
+        {"authority": "RoHS", "certification": "RoHS Compliant", "cert_id": "ROHS-KM-2024"}
+      ],
+      "catalog": {
+        "cherry_mx_red": {
+          "part_name": "Cherry MX Red Switches",
+          "category": "switches",
+          "unit_price": 0.45,
+          "specs": "Linear, 45g actuation, 2mm travel",
+          "stock": 50000,
+          "lead_time_days": 2
+        },
+        "cherry_mx_blue": {
+          "part_name": "Cherry MX Blue Switches",
+          "category": "switches",
+          "unit_price": 0.48,
+          "specs": "Clicky, 50g actuation, tactile",
+          "stock": 35000,
+          "lead_time_days": 2
+        },
+        "cherry_mx_brown": {
+          "part_name": "Cherry MX Brown Switches",
+          "category": "switches",
+          "unit_price": 0.46,
+          "specs": "Tactile, 45g actuation, silent",
+          "stock": 42000,
+          "lead_time_days": 2
+        },
+        "pbt_keycaps": {
+          "part_name": "PBT Keycaps Set",
+          "category": "keycaps",
+          "unit_price": 45.00,
+          "specs": "Double-shot PBT, 108 keys, OEM profile",
+          "stock": 800,
+          "lead_time_days": 3
+        },
+        "aluminum_case_60": {
+          "part_name": "Aluminum Case 60%",
+          "category": "cases",
+          "unit_price": 85.00,
+          "specs": "CNC aluminum, 60% layout, anodized",
+          "stock": 150,
+          "lead_time_days": 4
+        },
+        "aluminum_case_tkl": {
+          "part_name": "Aluminum Case TKL",
+          "category": "cases",
+          "unit_price": 120.00,
+          "specs": "CNC aluminum, TKL layout, brass weight",
+          "stock": 80,
+          "lead_time_days": 4
+        },
+        "pcb_hotswap_60": {
+          "part_name": "Hotswap PCB 60%",
+          "category": "pcb",
+          "unit_price": 42.00,
+          "specs": "60% layout, hotswap sockets, RGB",
+          "stock": 200,
+          "lead_time_days": 3
+        },
+        "stabilizers": {
+          "part_name": "Stabilizer Set GMK",
+          "category": "stabilizers",
+          "unit_price": 22.00,
+          "specs": "Screw-in, pre-lubed, 7 piece",
+          "stock": 400,
+          "lead_time_days": 2
+        },
+        "foam_kit": {
+          "part_name": "Sound Dampening Foam Kit",
+          "category": "accessories",
+          "unit_price": 15.00,
+          "specs": "PE foam + silicone, universal fit",
+          "stock": 600,
+          "lead_time_days": 1
+        }
+      }
+    },
+
+    "switch-world": {
+      "name": "Switch World Co.",
+      "region": "Asia",
+      "country": "South Korea",
+      "currency": "EUR",
+      "avg_lead_time_days": 7,
+      "max_discount_pct": 20,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.88,
+        "total_transactions": 450,
+        "dispute_rate": 0.03
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-SW-2024"}
+      ],
+      "catalog": {
+        "gateron_yellow": {
+          "part_name": "Gateron Yellow Switches",
+          "category": "switches",
+          "unit_price": 0.28,
+          "specs": "Linear, 50g actuation, smooth",
+          "stock": 80000,
+          "lead_time_days": 5
+        },
+        "gateron_milky": {
+          "part_name": "Gateron Milky Yellow",
+          "category": "switches",
+          "unit_price": 0.32,
+          "specs": "Linear, milky housing, RGB",
+          "stock": 60000,
+          "lead_time_days": 5
+        },
+        "akko_cs_rose": {
+          "part_name": "Akko CS Rose Red",
+          "category": "switches",
+          "unit_price": 0.25,
+          "specs": "Linear, 43g actuation, factory lubed",
+          "stock": 100000,
+          "lead_time_days": 5
+        },
+        "durock_v2": {
+          "part_name": "Durock V2 Stabilizers",
+          "category": "stabilizers",
+          "unit_price": 18.00,
+          "specs": "Screw-in, smoky housing",
+          "stock": 1200,
+          "lead_time_days": 6
+        },
+        "krytox_205g0": {
+          "part_name": "Krytox 205g0 Lube",
+          "category": "accessories",
+          "unit_price": 12.00,
+          "specs": "5ml, switch lubricant",
+          "stock": 800,
+          "lead_time_days": 4
+        },
+        "switch_films": {
+          "part_name": "Switch Films Pack",
+          "category": "accessories",
+          "unit_price": 8.00,
+          "specs": "120 pieces, PC material",
+          "stock": 2000,
+          "lead_time_days": 4
+        }
+      }
+    },
+
+    "keeb-supply": {
+      "name": "Keeb Supply USA",
+      "region": "US",
+      "country": "USA",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 8,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.91,
+        "total_transactions": 320,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "FCC", "certification": "FCC Certified", "cert_id": "FCC-KS-2024"}
+      ],
+      "catalog": {
+        "holy_panda": {
+          "part_name": "Holy Panda Switches",
+          "category": "switches",
+          "unit_price": 1.10,
+          "specs": "Tactile, 67g actuation, legendary feel",
+          "stock": 8000,
+          "lead_time_days": 4
+        },
+        "boba_u4t": {
+          "part_name": "Boba U4T Switches",
+          "category": "switches",
+          "unit_price": 0.65,
+          "specs": "Tactile, 62g, no pre-travel",
+          "stock": 15000,
+          "lead_time_days": 4
+        },
+        "sa_keycaps": {
+          "part_name": "SA Profile Keycaps",
+          "category": "keycaps",
+          "unit_price": 89.00,
+          "specs": "ABS double-shot, SA profile, 130 keys",
+          "stock": 200,
+          "lead_time_days": 5
+        },
+        "gmk_keycaps": {
+          "part_name": "GMK Keycaps Base Kit",
+          "category": "keycaps",
+          "unit_price": 135.00,
+          "specs": "ABS double-shot, Cherry profile",
+          "stock": 50,
+          "lead_time_days": 6
+        },
+        "brass_plate": {
+          "part_name": "Brass Plate 60%",
+          "category": "plates",
+          "unit_price": 55.00,
+          "specs": "1.5mm brass, 60% layout",
+          "stock": 120,
+          "lead_time_days": 5
+        },
+        "coiled_cable": {
+          "part_name": "Coiled USB-C Cable",
+          "category": "accessories",
+          "unit_price": 35.00,
+          "specs": "Custom coiled, aviator connector",
+          "stock": 300,
+          "lead_time_days": 3
+        }
+      }
+    },
+
+    "nordic-electronics": {
+      "name": "Nordic Electronics AB",
+      "region": "EU",
+      "country": "Sweden",
+      "currency": "EUR",
+      "avg_lead_time_days": 4,
+      "max_discount_pct": 12,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.93,
+        "total_transactions": 280,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-NE-2024"},
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-NE-2024"}
+      ],
+      "catalog": {
+        "temperature_sensor": {
+          "part_name": "Temperature Sensor NTC 10K",
+          "category": "sensors",
+          "unit_price": 2.50,
+          "specs": "NTC 10K, -40°C to 125°C, 1% accuracy",
+          "stock": 10000,
+          "lead_time_days": 2
+        },
+        "humidity_sensor": {
+          "part_name": "Humidity Sensor DHT22",
+          "category": "sensors",
+          "unit_price": 8.00,
+          "specs": "0-100% RH, digital output",
+          "stock": 3000,
+          "lead_time_days": 2
+        },
+        "pressure_sensor": {
+          "part_name": "Pressure Sensor BMP280",
+          "category": "sensors",
+          "unit_price": 4.50,
+          "specs": "300-1100 hPa, I2C/SPI",
+          "stock": 5000,
+          "lead_time_days": 2
+        },
+        "esp32_module": {
+          "part_name": "ESP32 DevKit",
+          "category": "microcontrollers",
+          "unit_price": 12.00,
+          "specs": "WiFi+BT, dual core, 4MB flash",
+          "stock": 2000,
+          "lead_time_days": 3
+        },
+        "arduino_nano": {
+          "part_name": "Arduino Nano Every",
+          "category": "microcontrollers",
+          "unit_price": 15.00,
+          "specs": "ATmega4809, 48KB flash",
+          "stock": 1500,
+          "lead_time_days": 3
+        },
+        "raspberry_pi_pico": {
+          "part_name": "Raspberry Pi Pico",
+          "category": "microcontrollers",
+          "unit_price": 5.00,
+          "specs": "RP2040, 264KB SRAM",
+          "stock": 4000,
+          "lead_time_days": 2
+        },
+        "oled_display": {
+          "part_name": "OLED Display 0.96 inch",
+          "category": "displays",
+          "unit_price": 6.50,
+          "specs": "128x64, I2C, SSD1306",
+          "stock": 2500,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "precision-motors": {
+      "name": "Precision Motors Ltd",
+      "region": "EU",
+      "country": "UK",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 10,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.90,
+        "total_transactions": 180,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-PM-2024"},
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-PM-2024"}
+      ],
+      "catalog": {
+        "stepper_nema17": {
+          "part_name": "Stepper Motor NEMA17",
+          "category": "motors",
+          "unit_price": 18.00,
+          "specs": "1.8°, 1.5A, 40mm body",
+          "stock": 800,
+          "lead_time_days": 4
+        },
+        "stepper_nema23": {
+          "part_name": "Stepper Motor NEMA23",
+          "category": "motors",
+          "unit_price": 35.00,
+          "specs": "1.8°, 2.8A, 56mm body",
+          "stock": 400,
+          "lead_time_days": 4
+        },
+        "servo_mg996r": {
+          "part_name": "Servo Motor MG996R",
+          "category": "motors",
+          "unit_price": 8.00,
+          "specs": "180°, 10kg-cm torque, metal gears",
+          "stock": 1200,
+          "lead_time_days": 3
+        },
+        "dc_motor_12v": {
+          "part_name": "DC Motor 12V 100RPM",
+          "category": "motors",
+          "unit_price": 12.00,
+          "specs": "12V, 100RPM, geared",
+          "stock": 600,
+          "lead_time_days": 3
+        },
+        "motor_driver_tb6600": {
+          "part_name": "Stepper Driver TB6600",
+          "category": "drivers",
+          "unit_price": 15.00,
+          "specs": "4A max, microstepping",
+          "stock": 500,
+          "lead_time_days": 3
+        }
+      }
+    },
+
+    "tokyo-servo": {
+      "name": "Tokyo Servo Industries",
+      "region": "Asia",
+      "country": "Japan",
+      "currency": "EUR",
+      "avg_lead_time_days": 6,
+      "max_discount_pct": 12,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.97,
+        "total_transactions": 1250,
+        "dispute_rate": 0.005
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-TS-2024"},
+        {"authority": "JIS", "certification": "JIS Quality", "cert_id": "JIS-TS-2024"}
+      ],
+      "catalog": {
+        "servo_industrial_750w": {
+          "part_name": "Industrial Servo Motor 750W",
+          "category": "industrial_motors",
+          "unit_price": 285.00,
+          "specs": "750W, 3000RPM, encoder included",
+          "stock": 150,
+          "lead_time_days": 5
+        },
+        "servo_industrial_1500w": {
+          "part_name": "Industrial Servo Motor 1.5kW",
+          "category": "industrial_motors",
+          "unit_price": 520.00,
+          "specs": "1.5kW, 3000RPM, 23-bit encoder",
+          "stock": 80,
+          "lead_time_days": 6
+        },
+        "servo_driver_750w": {
+          "part_name": "Servo Driver 750W",
+          "category": "drivers",
+          "unit_price": 195.00,
+          "specs": "Single phase 220V, EtherCAT",
+          "stock": 120,
+          "lead_time_days": 4
+        },
+        "harmonic_drive_50": {
+          "part_name": "Harmonic Drive Reducer 50:1",
+          "category": "gearboxes",
+          "unit_price": 450.00,
+          "specs": "50:1 ratio, zero backlash",
+          "stock": 45,
+          "lead_time_days": 8
+        },
+        "linear_actuator_100mm": {
+          "part_name": "Linear Actuator 100mm",
+          "category": "actuators",
+          "unit_price": 165.00,
+          "specs": "100mm stroke, 500N force",
+          "stock": 200,
+          "lead_time_days": 4
+        }
+      }
+    },
+
+    "3dprint-hub": {
+      "name": "3DPrint Hub Europe",
+      "region": "EU",
+      "country": "Netherlands",
+      "currency": "EUR",
+      "avg_lead_time_days": 2,
+      "max_discount_pct": 15,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.91,
+        "total_transactions": 560,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-3DH-2024"}
+      ],
+      "catalog": {
+        "pla_filament_1kg": {
+          "part_name": "PLA Filament 1kg",
+          "category": "filament",
+          "unit_price": 22.00,
+          "specs": "1.75mm, ±0.02mm tolerance",
+          "stock": 5000,
+          "lead_time_days": 1
+        },
+        "petg_filament_1kg": {
+          "part_name": "PETG Filament 1kg",
+          "category": "filament",
+          "unit_price": 28.00,
+          "specs": "1.75mm, food safe",
+          "stock": 3000,
+          "lead_time_days": 1
+        },
+        "abs_filament_1kg": {
+          "part_name": "ABS Filament 1kg",
+          "category": "filament",
+          "unit_price": 24.00,
+          "specs": "1.75mm, high impact",
+          "stock": 2500,
+          "lead_time_days": 1
+        },
+        "hotend_v6": {
+          "part_name": "E3D V6 Hotend",
+          "category": "extruders",
+          "unit_price": 55.00,
+          "specs": "All-metal, 300°C max",
+          "stock": 400,
+          "lead_time_days": 2
+        },
+        "extruder_bmg": {
+          "part_name": "BMG Extruder Clone",
+          "category": "extruders",
+          "unit_price": 35.00,
+          "specs": "Dual drive, 3:1 ratio",
+          "stock": 350,
+          "lead_time_days": 2
+        },
+        "heated_bed_300": {
+          "part_name": "Heated Bed 300x300",
+          "category": "beds",
+          "unit_price": 45.00,
+          "specs": "300x300mm, 24V, 750W",
+          "stock": 180,
+          "lead_time_days": 3
+        },
+        "linear_rail_mgn12": {
+          "part_name": "Linear Rail MGN12H 400mm",
+          "category": "motion",
+          "unit_price": 18.00,
+          "specs": "MGN12H, 400mm length",
+          "stock": 600,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "robo-components": {
+      "name": "RoboComponents Inc",
+      "region": "US",
+      "country": "USA",
+      "currency": "EUR",
+      "avg_lead_time_days": 4,
+      "max_discount_pct": 10,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.89,
+        "total_transactions": 420,
+        "dispute_rate": 0.03
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-RC-2024"},
+        {"authority": "UL", "certification": "UL Listed", "cert_id": "UL-RC-2024"}
+      ],
+      "catalog": {
+        "lidar_rplidar_a1": {
+          "part_name": "RPLidar A1 360°",
+          "category": "sensors",
+          "unit_price": 99.00,
+          "specs": "12m range, 8000 samples/s",
+          "stock": 150,
+          "lead_time_days": 3
+        },
+        "depth_camera_d435": {
+          "part_name": "Intel RealSense D435",
+          "category": "cameras",
+          "unit_price": 315.00,
+          "specs": "Depth camera, RGB, 90fps",
+          "stock": 60,
+          "lead_time_days": 5
+        },
+        "robot_arm_6dof": {
+          "part_name": "Robot Arm 6-DOF Kit",
+          "category": "robotics",
+          "unit_price": 580.00,
+          "specs": "6 axis, 500g payload",
+          "stock": 25,
+          "lead_time_days": 7
+        },
+        "mecanum_wheel_100": {
+          "part_name": "Mecanum Wheel 100mm",
+          "category": "wheels",
+          "unit_price": 45.00,
+          "specs": "100mm, aluminum hub",
+          "stock": 400,
+          "lead_time_days": 3
+        },
+        "motor_encoder_hall": {
+          "part_name": "DC Motor with Encoder",
+          "category": "motors",
+          "unit_price": 32.00,
+          "specs": "12V, 200RPM, Hall encoder",
+          "stock": 300,
+          "lead_time_days": 3
+        },
+        "jetson_nano": {
+          "part_name": "NVIDIA Jetson Nano",
+          "category": "compute",
+          "unit_price": 149.00,
+          "specs": "4GB, 128 CUDA cores",
+          "stock": 80,
+          "lead_time_days": 4
+        }
+      }
+    },
+
+    "led-world": {
+      "name": "LED World Shenzhen",
+      "region": "Asia",
+      "country": "China",
+      "currency": "EUR",
+      "avg_lead_time_days": 10,
+      "max_discount_pct": 30,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.82,
+        "total_transactions": 890,
+        "dispute_rate": 0.05
+      },
+      "certifications": [
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-LW-2024"}
+      ],
+      "catalog": {
+        "led_strip_5050": {
+          "part_name": "LED Strip 5050 RGB 5m",
+          "category": "led",
+          "unit_price": 8.00,
+          "specs": "60 LEDs/m, IP65, 5m roll",
+          "stock": 10000,
+          "lead_time_days": 8
+        },
+        "led_strip_ws2812b": {
+          "part_name": "WS2812B LED Strip 1m",
+          "category": "led",
+          "unit_price": 12.00,
+          "specs": "60 LEDs/m, addressable, 5V",
+          "stock": 5000,
+          "lead_time_days": 8
+        },
+        "led_panel_600x600": {
+          "part_name": "LED Panel 600x600mm",
+          "category": "led",
+          "unit_price": 35.00,
+          "specs": "40W, 4000K, 4000lm",
+          "stock": 800,
+          "lead_time_days": 10
+        },
+        "led_driver_100w": {
+          "part_name": "LED Driver 100W",
+          "category": "drivers",
+          "unit_price": 18.00,
+          "specs": "100W, waterproof, dimmable",
+          "stock": 1500,
+          "lead_time_days": 8
+        },
+        "cob_led_50w": {
+          "part_name": "COB LED 50W",
+          "category": "led",
+          "unit_price": 8.50,
+          "specs": "50W, 5000lm, cool white",
+          "stock": 3000,
+          "lead_time_days": 7
+        }
+      }
+    },
+
+    "solar-tech": {
+      "name": "SolarTech Solutions",
+      "region": "EU",
+      "country": "Germany",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 8,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.95,
+        "total_transactions": 340,
+        "dispute_rate": 0.01
+      },
+      "certifications": [
+        {"authority": "TUV", "certification": "TUV Certified", "cert_id": "TUV-ST-2024"},
+        {"authority": "IEC", "certification": "IEC 61215", "cert_id": "IEC-ST-2024"}
+      ],
+      "catalog": {
+        "solar_panel_400w": {
+          "part_name": "Solar Panel 400W Mono",
+          "category": "solar",
+          "unit_price": 180.00,
+          "specs": "400W, monocrystalline, 21%",
+          "stock": 500,
+          "lead_time_days": 5
+        },
+        "solar_panel_100w": {
+          "part_name": "Solar Panel 100W Portable",
+          "category": "solar",
+          "unit_price": 85.00,
+          "specs": "100W, foldable, ETFE",
+          "stock": 300,
+          "lead_time_days": 4
+        },
+        "mppt_controller_60a": {
+          "part_name": "MPPT Controller 60A",
+          "category": "controllers",
+          "unit_price": 145.00,
+          "specs": "60A, 12/24/48V auto",
+          "stock": 150,
+          "lead_time_days": 3
+        },
+        "inverter_3kw": {
+          "part_name": "Inverter 3kW Pure Sine",
+          "category": "inverters",
+          "unit_price": 420.00,
+          "specs": "3000W, pure sine, 48V",
+          "stock": 80,
+          "lead_time_days": 5
+        },
+        "lifepo4_battery_100ah": {
+          "part_name": "LiFePO4 Battery 100Ah",
+          "category": "batteries",
+          "unit_price": 650.00,
+          "specs": "12.8V, 100Ah, BMS included",
+          "stock": 60,
+          "lead_time_days": 6
+        }
+      }
+    },
+
+    "audio-masters": {
+      "name": "Audio Masters Pro",
+      "region": "EU",
+      "country": "Denmark",
+      "currency": "EUR",
+      "avg_lead_time_days": 4,
+      "max_discount_pct": 12,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.92,
+        "total_transactions": 280,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-AM-2024"}
+      ],
+      "catalog": {
+        "speaker_driver_6inch": {
+          "part_name": "Speaker Driver 6.5 inch",
+          "category": "speakers",
+          "unit_price": 42.00,
+          "specs": "6.5\", 100W RMS, 8 ohm",
+          "stock": 400,
+          "lead_time_days": 3
+        },
+        "tweeter_dome_1inch": {
+          "part_name": "Dome Tweeter 1 inch",
+          "category": "speakers",
+          "unit_price": 28.00,
+          "specs": "1\" silk dome, 50W",
+          "stock": 600,
+          "lead_time_days": 3
+        },
+        "subwoofer_12inch": {
+          "part_name": "Subwoofer 12 inch",
+          "category": "speakers",
+          "unit_price": 125.00,
+          "specs": "12\", 300W RMS, 4 ohm",
+          "stock": 150,
+          "lead_time_days": 4
+        },
+        "amplifier_class_d_500w": {
+          "part_name": "Class D Amplifier 500W",
+          "category": "amplifiers",
+          "unit_price": 85.00,
+          "specs": "500W mono, TPA3255",
+          "stock": 200,
+          "lead_time_days": 3
+        },
+        "crossover_3way": {
+          "part_name": "3-Way Crossover",
+          "category": "crossovers",
+          "unit_price": 35.00,
+          "specs": "800Hz/5kHz, 12dB/oct",
+          "stock": 300,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "cnc-parts-china": {
+      "name": "CNC Parts Direct",
+      "region": "Asia",
+      "country": "China",
+      "currency": "EUR",
+      "avg_lead_time_days": 12,
+      "max_discount_pct": 25,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.79,
+        "total_transactions": 750,
+        "dispute_rate": 0.06
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-CNC-2024"}
+      ],
+      "catalog": {
+        "spindle_2200w": {
+          "part_name": "CNC Spindle 2.2kW",
+          "category": "spindles",
+          "unit_price": 185.00,
+          "specs": "2.2kW, water cooled, ER20",
+          "stock": 200,
+          "lead_time_days": 10
+        },
+        "vfd_2200w": {
+          "part_name": "VFD Inverter 2.2kW",
+          "category": "drives",
+          "unit_price": 75.00,
+          "specs": "2.2kW, 220V, 0-400Hz",
+          "stock": 300,
+          "lead_time_days": 8
+        },
+        "ballscrew_1605": {
+          "part_name": "Ball Screw SFU1605 500mm",
+          "category": "motion",
+          "unit_price": 32.00,
+          "specs": "16mm dia, 5mm pitch, 500mm",
+          "stock": 500,
+          "lead_time_days": 10
+        },
+        "linear_rail_sbr20": {
+          "part_name": "Linear Rail SBR20 500mm",
+          "category": "motion",
+          "unit_price": 28.00,
+          "specs": "20mm shaft, 500mm, 2 blocks",
+          "stock": 400,
+          "lead_time_days": 10
+        },
+        "stepper_nema34": {
+          "part_name": "Stepper Motor NEMA34",
+          "category": "motors",
+          "unit_price": 65.00,
+          "specs": "8.5Nm, 6A, closed loop",
+          "stock": 180,
+          "lead_time_days": 10
+        },
+        "cnc_controller_mach3": {
+          "part_name": "CNC Controller Board",
+          "category": "controllers",
+          "unit_price": 45.00,
+          "specs": "5-axis, USB, Mach3",
+          "stock": 250,
+          "lead_time_days": 8
+        }
+      }
+    },
+
+    "hydraulics-eu": {
+      "name": "HydraFlow Systems",
+      "region": "EU",
+      "country": "Italy",
+      "currency": "EUR",
+      "avg_lead_time_days": 6,
+      "max_discount_pct": 10,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.88,
+        "total_transactions": 190,
+        "dispute_rate": 0.03
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-HF-2024"},
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-HF-2024"}
+      ],
+      "catalog": {
+        "hydraulic_pump_10cc": {
+          "part_name": "Hydraulic Gear Pump 10cc",
+          "category": "hydraulics",
+          "unit_price": 145.00,
+          "specs": "10cc/rev, 250 bar max",
+          "stock": 80,
+          "lead_time_days": 5
+        },
+        "hydraulic_cylinder_50": {
+          "part_name": "Hydraulic Cylinder 50mm",
+          "category": "hydraulics",
+          "unit_price": 185.00,
+          "specs": "50mm bore, 200mm stroke",
+          "stock": 60,
+          "lead_time_days": 6
+        },
+        "solenoid_valve_4way": {
+          "part_name": "Solenoid Valve 4/3 Way",
+          "category": "valves",
+          "unit_price": 95.00,
+          "specs": "4/3 way, 24V DC, 80L/min",
+          "stock": 100,
+          "lead_time_days": 4
+        },
+        "hydraulic_hose_3m": {
+          "part_name": "Hydraulic Hose 3/8\" 3m",
+          "category": "hoses",
+          "unit_price": 42.00,
+          "specs": "3/8\", 350 bar, 3m",
+          "stock": 200,
+          "lead_time_days": 3
+        },
+        "pressure_gauge_250bar": {
+          "part_name": "Pressure Gauge 250 bar",
+          "category": "gauges",
+          "unit_price": 28.00,
+          "specs": "0-250 bar, glycerin filled",
+          "stock": 150,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "bearings-pro": {
+      "name": "BearingsPro International",
+      "region": "EU",
+      "country": "Slovakia",
+      "currency": "EUR",
+      "avg_lead_time_days": 3,
+      "max_discount_pct": 18,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.86,
+        "total_transactions": 620,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-BP-2024"}
+      ],
+      "catalog": {
+        "bearing_6205": {
+          "part_name": "Ball Bearing 6205-2RS",
+          "category": "bearings",
+          "unit_price": 4.50,
+          "specs": "25x52x15mm, sealed",
+          "stock": 5000,
+          "lead_time_days": 2
+        },
+        "bearing_6008": {
+          "part_name": "Ball Bearing 6008-ZZ",
+          "category": "bearings",
+          "unit_price": 8.00,
+          "specs": "40x68x15mm, shielded",
+          "stock": 3000,
+          "lead_time_days": 2
+        },
+        "bearing_tapered_30205": {
+          "part_name": "Tapered Roller 30205",
+          "category": "bearings",
+          "unit_price": 12.00,
+          "specs": "25x52x16.25mm",
+          "stock": 2000,
+          "lead_time_days": 3
+        },
+        "bearing_thrust_51105": {
+          "part_name": "Thrust Bearing 51105",
+          "category": "bearings",
+          "unit_price": 6.50,
+          "specs": "25x42x11mm",
+          "stock": 1500,
+          "lead_time_days": 2
+        },
+        "linear_bearing_lm8uu": {
+          "part_name": "Linear Bearing LM8UU",
+          "category": "bearings",
+          "unit_price": 1.80,
+          "specs": "8x15x24mm",
+          "stock": 8000,
+          "lead_time_days": 1
+        },
+        "pillow_block_ucp205": {
+          "part_name": "Pillow Block UCP205",
+          "category": "bearings",
+          "unit_price": 9.00,
+          "specs": "25mm bore, cast iron",
+          "stock": 1200,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "pcb-express": {
+      "name": "PCB Express Asia",
+      "region": "Asia",
+      "country": "China",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 20,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.84,
+        "total_transactions": 1800,
+        "dispute_rate": 0.04
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-PCB-2024"},
+        {"authority": "UL", "certification": "UL Listed", "cert_id": "UL-PCB-2024"}
+      ],
+      "catalog": {
+        "pcb_2layer_10pcs": {
+          "part_name": "PCB 2-Layer 10pcs 10x10cm",
+          "category": "pcb",
+          "unit_price": 8.00,
+          "specs": "2-layer, 1.6mm, HASL, 10pcs",
+          "stock": 10000,
+          "lead_time_days": 3
+        },
+        "pcb_4layer_10pcs": {
+          "part_name": "PCB 4-Layer 10pcs 10x10cm",
+          "category": "pcb",
+          "unit_price": 28.00,
+          "specs": "4-layer, 1.6mm, ENIG, 10pcs",
+          "stock": 5000,
+          "lead_time_days": 5
+        },
+        "stencil_steel": {
+          "part_name": "SMD Stencil Steel",
+          "category": "assembly",
+          "unit_price": 18.00,
+          "specs": "0.12mm, frameless",
+          "stock": 2000,
+          "lead_time_days": 2
+        },
+        "solder_paste_sn63": {
+          "part_name": "Solder Paste Sn63/Pb37",
+          "category": "assembly",
+          "unit_price": 25.00,
+          "specs": "500g, T4 mesh",
+          "stock": 800,
+          "lead_time_days": 3
+        },
+        "flux_no_clean": {
+          "part_name": "No-Clean Flux Pen",
+          "category": "assembly",
+          "unit_price": 8.00,
+          "specs": "10ml, no-clean",
+          "stock": 1500,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "pneumatics-direct": {
+      "name": "Pneumatics Direct Co",
+      "region": "US",
+      "country": "USA",
+      "currency": "EUR",
+      "avg_lead_time_days": 5,
+      "max_discount_pct": 12,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.87,
+        "total_transactions": 310,
+        "dispute_rate": 0.03
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-PD-2024"}
+      ],
+      "catalog": {
+        "air_cylinder_50mm": {
+          "part_name": "Air Cylinder 50mm Bore",
+          "category": "pneumatics",
+          "unit_price": 65.00,
+          "specs": "50mm bore, 100mm stroke",
+          "stock": 200,
+          "lead_time_days": 4
+        },
+        "solenoid_valve_5port": {
+          "part_name": "Solenoid Valve 5/2 Way",
+          "category": "valves",
+          "unit_price": 42.00,
+          "specs": "5/2 way, 24V DC, 1/4\"",
+          "stock": 300,
+          "lead_time_days": 3
+        },
+        "frl_unit": {
+          "part_name": "FRL Unit 1/4\"",
+          "category": "pneumatics",
+          "unit_price": 55.00,
+          "specs": "Filter-Regulator-Lubricator",
+          "stock": 150,
+          "lead_time_days": 4
+        },
+        "push_fitting_8mm": {
+          "part_name": "Push Fitting 8mm x 1/4\"",
+          "category": "fittings",
+          "unit_price": 2.50,
+          "specs": "8mm tube, 1/4\" thread",
+          "stock": 2000,
+          "lead_time_days": 2
+        },
+        "air_tubing_8mm_10m": {
+          "part_name": "PU Air Tubing 8mm 10m",
+          "category": "tubing",
+          "unit_price": 15.00,
+          "specs": "8mm OD, polyurethane, 10m",
+          "stock": 500,
+          "lead_time_days": 2
+        }
+      }
+    },
+
+    "medical-components": {
+      "name": "MedTech Components GmbH",
+      "region": "EU",
+      "country": "Switzerland",
+      "currency": "EUR",
+      "avg_lead_time_days": 7,
+      "max_discount_pct": 5,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.98,
+        "total_transactions": 95,
+        "dispute_rate": 0.0
+      },
+      "certifications": [
+        {"authority": "ISO", "certification": "ISO 13485", "cert_id": "ISO-13485-MC-2024"},
+        {"authority": "FDA", "certification": "FDA Registered", "cert_id": "FDA-MC-2024"},
+        {"authority": "CE", "certification": "CE Medical", "cert_id": "CE-MED-MC-2024"}
+      ],
+      "catalog": {
+        "peristaltic_pump": {
+          "part_name": "Peristaltic Pump Medical",
+          "category": "pumps",
+          "unit_price": 285.00,
+          "specs": "0.1-100ml/min, stepper driven",
+          "stock": 40,
+          "lead_time_days": 6
+        },
+        "pressure_sensor_medical": {
+          "part_name": "Pressure Sensor Medical",
+          "category": "sensors",
+          "unit_price": 95.00,
+          "specs": "0-300mmHg, medical grade",
+          "stock": 100,
+          "lead_time_days": 5
+        },
+        "flow_sensor_liquid": {
+          "part_name": "Flow Sensor Liquid",
+          "category": "sensors",
+          "unit_price": 125.00,
+          "specs": "0.5-30L/min, biocompatible",
+          "stock": 60,
+          "lead_time_days": 6
+        },
+        "stepper_silent": {
+          "part_name": "Stepper Motor Silent",
+          "category": "motors",
+          "unit_price": 78.00,
+          "specs": "NEMA17, <40dB, medical",
+          "stock": 80,
+          "lead_time_days": 5
+        }
+      }
+    },
+
+    "ev-components": {
+      "name": "EV Components Ltd",
+      "region": "EU",
+      "country": "Norway",
+      "currency": "EUR",
+      "avg_lead_time_days": 6,
+      "max_discount_pct": 10,
+      "trust": {
+        "verified": true,
+        "reputation_score": 0.91,
+        "total_transactions": 165,
+        "dispute_rate": 0.02
+      },
+      "certifications": [
+        {"authority": "CE", "certification": "CE Certified", "cert_id": "CE-EV-2024"},
+        {"authority": "ISO", "certification": "ISO 9001", "cert_id": "ISO-9001-EV-2024"}
+      ],
+      "catalog": {
+        "bldc_motor_5kw": {
+          "part_name": "BLDC Motor 5kW Hub",
+          "category": "ev_motors",
+          "unit_price": 420.00,
+          "specs": "5kW, 48V, hub motor",
+          "stock": 50,
+          "lead_time_days": 6
+        },
+        "bldc_motor_10kw": {
+          "part_name": "BLDC Motor 10kW",
+          "category": "ev_motors",
+          "unit_price": 780.00,
+          "specs": "10kW, 72V, air cooled",
+          "stock": 30,
+          "lead_time_days": 8
+        },
+        "motor_controller_72v": {
+          "part_name": "Motor Controller 72V 100A",
+          "category": "controllers",
+          "unit_price": 285.00,
+          "specs": "72V, 100A, FOC",
+          "stock": 45,
+          "lead_time_days": 5
+        },
+        "bms_16s_100a": {
+          "part_name": "BMS 16S 100A",
+          "category": "bms",
+          "unit_price": 85.00,
+          "specs": "16S LiFePO4, 100A, balancing",
+          "stock": 120,
+          "lead_time_days": 4
+        },
+        "charger_72v_20a": {
+          "part_name": "Charger 72V 20A",
+          "category": "chargers",
+          "unit_price": 195.00,
+          "specs": "72V, 20A, CC/CV",
+          "stock": 60,
+          "lead_time_days": 5
+        }
+      }
     }
   },
 
@@ -261,6 +1587,15 @@
       "speed_days": 5,
       "regions": ["EU"],
       "tracking": true
+    },
+    "fedex-intl": {
+      "name": "FedEx International",
+      "type": "air",
+      "base_cost": 30.00,
+      "cost_per_kg": 10.00,
+      "speed_days": 2,
+      "regions": ["US", "EU", "Asia"],
+      "tracking": true
     }
   },
 
@@ -268,7 +1603,7 @@
     "CE": {
       "name": "CE Marking",
       "region": "EU",
-      "required_for": ["electronics", "power", "fpv"],
+      "required_for": ["electronics", "power", "fpv", "switches", "pcb"],
       "description": "EU conformity marking for product safety"
     },
     "battery_shipping": {
@@ -291,6 +1626,12 @@
       "required_for": ["complete_drone"],
       "description": "Drones over 250g require operator registration",
       "weight_threshold_g": 250
+    },
+    "rohs": {
+      "name": "RoHS Compliance",
+      "region": "EU",
+      "required_for": ["electronics", "switches", "pcb", "sensors", "microcontrollers"],
+      "description": "Restriction of Hazardous Substances in electrical equipment"
     }
   },
 
@@ -334,65 +1675,6 @@
           "discount_received": 5,
           "delivery_days": 5,
           "on_time": true
-        },
-        {
-          "date": "2024-01-22",
-          "supplier": "techparts-global",
-          "items": [{"part": "esc", "qty": 20}],
-          "total": 560,
-          "discount_received": 5,
-          "delivery_days": 4,
-          "on_time": true
-        },
-        {
-          "date": "2024-02-01",
-          "supplier": "shenzhen-tech",
-          "items": [{"part": "brushless_motor", "qty": 50}],
-          "total": 880,
-          "discount_received": 20,
-          "delivery_days": 18,
-          "on_time": false,
-          "notes": "4 days late"
-        },
-        {
-          "date": "2024-02-10",
-          "supplier": "techparts-global",
-          "items": [{"part": "brushless_motor", "qty": 25}],
-          "total": 1125,
-          "discount_received": 8,
-          "delivery_days": 5,
-          "on_time": true
-        },
-        {
-          "date": "2024-02-15",
-          "supplier": "droneparts-eu",
-          "items": [{"part": "carbon_frame", "qty": 15}],
-          "total": 975,
-          "discount_received": 10,
-          "delivery_days": 3,
-          "on_time": true
-        },
-        {
-          "date": "2024-02-20",
-          "supplier": "shenzhen-tech",
-          "items": [
-            {"part": "esc", "qty": 40},
-            {"part": "propeller_set", "qty": 100}
-          ],
-          "total": 960,
-          "discount_received": 22,
-          "delivery_days": 16,
-          "on_time": false,
-          "notes": "2 days late"
-        },
-        {
-          "date": "2024-03-01",
-          "supplier": "techparts-global",
-          "items": [{"part": "flight_controller", "qty": 10}],
-          "total": 850,
-          "discount_received": 8,
-          "delivery_days": 4,
-          "on_time": true
         }
       ],
       "spend_analytics": {
@@ -401,58 +1683,8 @@
           "techparts-global": {"total": 3435, "orders": 4, "avg_discount": 6.5},
           "shenzhen-tech": {"total": 1840, "orders": 2, "avg_discount": 21},
           "droneparts-eu": {"total": 975, "orders": 1, "avg_discount": 10}
-        },
-        "by_category": {
-          "propulsion": 2905,
-          "electronics": 1410,
-          "frame": 975,
-          "accessories": 960
         }
-      },
-      "supplier_performance": {
-        "techparts-global": {
-          "orders": 4,
-          "on_time_rate": 1.0,
-          "avg_discount": 6.5,
-          "quality_issues": 0
-        },
-        "shenzhen-tech": {
-          "orders": 2,
-          "on_time_rate": 0.0,
-          "avg_discount": 21,
-          "quality_issues": 0,
-          "notes": "Always late but good discounts"
-        },
-        "droneparts-eu": {
-          "orders": 1,
-          "on_time_rate": 1.0,
-          "avg_discount": 10,
-          "quality_issues": 0
-        }
-      },
-      "pain_points": [
-        {"type": "late_delivery", "supplier": "shenzhen-tech", "frequency": "100%", "impact": "high"},
-        {"type": "limited_discount", "supplier": "techparts-global", "detail": "Never exceeds 8%"}
-      ],
-      "opportunities": [
-        {
-          "type": "cost_saving",
-          "detail": "Motors from TechParts cost €45. ShenzhenTech offers €22 (51% savings)",
-          "risk": "ShenzhenTech has 0% on-time rate",
-          "recommendation": "Use ShenzhenTech for non-urgent stock replenishment only"
-        },
-        {
-          "type": "volume_discount",
-          "detail": "Consolidate motor orders to hit 100 units/month for bulk pricing",
-          "potential_savings": "Additional 5-10% discount"
-        },
-        {
-          "type": "supplier_diversification",
-          "detail": "55% spend concentrated with TechParts",
-          "risk": "Single supplier dependency",
-          "recommendation": "Qualify DroneParts EU as backup for electronics"
-        }
-      ]
+      }
     }
   },
 
@@ -462,34 +1694,31 @@
       "negotiations": 47,
       "avg_discount_achieved": 7.2,
       "max_discount_seen": 8,
-      "best_opening_ask": 15,
-      "patterns": [
-        "Never exceeds 8% regardless of order size",
-        "Responds quickly, professional",
-        "No bulk discount advantage"
-      ]
+      "best_opening_ask": 15
     },
     "shenzhen-tech": {
       "negotiations": 89,
       "avg_discount_achieved": 21.5,
       "max_discount_seen": 25,
-      "best_opening_ask": 25,
-      "patterns": [
-        "Very flexible on price",
-        "Bulk orders get better rates",
-        "Always counter first, then accept"
-      ]
+      "best_opening_ask": 25
     },
     "droneparts-eu": {
       "negotiations": 23,
       "avg_discount_achieved": 11.2,
       "max_discount_seen": 15,
-      "best_opening_ask": 18,
-      "patterns": [
-        "Moderate flexibility",
-        "Responds well to loyalty argument",
-        "Faster shipping can be negotiated"
-      ]
+      "best_opening_ask": 18
+    },
+    "keyboard-masters": {
+      "negotiations": 156,
+      "avg_discount_achieved": 8.5,
+      "max_discount_seen": 10,
+      "best_opening_ask": 12
+    },
+    "switch-world": {
+      "negotiations": 78,
+      "avg_discount_achieved": 16.8,
+      "max_discount_seen": 20,
+      "best_opening_ask": 22
     }
   }
 }
