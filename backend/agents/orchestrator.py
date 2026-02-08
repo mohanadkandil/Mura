@@ -1,7 +1,7 @@
 """
 Orchestrator Agent - Coordinates the entire supply chain workflow.
 
-This is the brain of PACT. It:
+This is the brain of MURA. It:
 1. Receives user intent (e.g., "Build me a racing drone")
 2. Generates or uses a BOM
 3. Discovers suppliers via registry

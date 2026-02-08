@@ -1,5 +1,5 @@
 """
-PACT API - Supply Chain Agent Coordination Network
+MURA API - Supply Chain Agent Coordination Network
 
 FastAPI backend providing:
 - /procure - Full procurement workflow
@@ -48,7 +48,7 @@ from core.rl import bandit, stats
 # =============================================================================
 
 app = FastAPI(
-    title="PACT API",
+    title="MURA API",
     description="Supply Chain Agent Coordination Network - Where Agents Shake Hands",
     version="0.1.0",
 )
@@ -123,7 +123,7 @@ async def startup():
         except ValueError:
             pass  # Already registered
 
-    memory.log_activity("PACT API started")
+    memory.log_activity("MURA API started")
 
 
 # =============================================================================
@@ -134,7 +134,7 @@ async def startup():
 async def root():
     """Root endpoint."""
     return {
-        "name": "PACT API",
+        "name": "MURA API",
         "tagline": "Where Agents Shake Hands",
         "version": "0.1.0",
         "status": "running",
