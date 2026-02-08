@@ -35,9 +35,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/mura-network/mura-sdk"
-Documentation = "https://docs.mura.dev"
-Repository = "https://github.com/mura-network/mura-sdk"
+Homepage = "https://github.com/mohanadkandil/Mura"
+Documentation = "https://github.com/mohanadkandil/Mura"
+Repository = "https://github.com/mohanadkandil/Mura"
 
 [tool.hatch.build.targets.wheel]
 packages = ["mura"]

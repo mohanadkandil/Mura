@@ -143,7 +143,7 @@ export default function DocsPage() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/mura-network"
+              href="https://github.com/mohanadkandil/Mura"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-[#172c66] hover:text-[#001858] hover:bg-[#f3d2c1] rounded-lg transition-colors"
