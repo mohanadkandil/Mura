@@ -54,7 +54,7 @@ function getAgentInfo(agentName: string, supplierCount: { count: number }): Agen
   const lower = agentName.toLowerCase();
 
   if (lower.includes("orchestrator") || lower.includes("pact") || lower === "orchestrator") {
-    return { id: "orchestrator", type: "orchestrator", name: "PACT Core" };
+    return { id: "orchestrator", type: "orchestrator", name: "MURA Core" };
   }
   if (lower.includes("logistics") || lower === "logistics") {
     return { id: "logistics", type: "logistics", name: "Logistics Agent" };
@@ -87,12 +87,12 @@ function getAgentInfo(agentName: string, supplierCount: { count: number }): Agen
   }
 
   // Default to orchestrator for unknown
-  return { id: "orchestrator", type: "orchestrator", name: "PACT Core" };
+  return { id: "orchestrator", type: "orchestrator", name: "MURA Core" };
 }
 
 // Initial state - only orchestrator visible
 const initialAgents: Agent[] = [
-  { id: "orchestrator", type: "orchestrator", name: "PACT Core", status: "idle" },
+  { id: "orchestrator", type: "orchestrator", name: "MURA Core", status: "idle" },
 ];
 
 export default function Home() {
@@ -137,7 +137,7 @@ export default function Home() {
 
   const addLog = useCallback((agent: string, message: string, type: LogEntry["type"] = "info", details?: string) => {
     const agentNames: Record<string, string> = {
-      orchestrator: "PACT Orchestrator",
+      orchestrator: "MURA Orchestrator",
       "supplier-1": "Supplier Agent 1",
       "supplier-2": "Supplier Agent 2",
       "supplier-3": "Supplier Agent 3",
@@ -163,7 +163,7 @@ export default function Home() {
     setError(null);
 
     // Reset to only orchestrator
-    setAgents([{ id: "orchestrator", type: "orchestrator", name: "PACT Core", status: "thinking", thought: "Processing request..." }]);
+    setAgents([{ id: "orchestrator", type: "orchestrator", name: "MURA Core", status: "thinking", thought: "Processing request..." }]);
     setDiscoveredAgents(new Set(["orchestrator"]));
     setActiveConnections([]);
 
@@ -342,8 +342,8 @@ export default function Home() {
               <Sparkles className="w-5 h-5" style={{ color: '#001858' }} />
             </motion.div>
             <div>
-              <h1 className="text-xl font-bold" style={{ color: '#001858' }}>PACT</h1>
-              <p className="text-xs" style={{ color: '#172c66' }}>Where Agents Shake Hands</p>
+              <h1 className="text-xl font-bold" style={{ color: '#001858' }}>MURA</h1>
+              <p className="text-xs" style={{ color: '#172c66' }}>Supply Chain Agent Network</p>
             </div>
           </div>
 
@@ -358,6 +358,16 @@ export default function Home() {
             >
               <Globe className="w-4 h-4" />
               Registry
+            </Link>
+            <Link
+              href="/docs"
+              className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
+              style={{
+                color: '#001858',
+                border: '2px solid #001858',
+              }}
+            >
+              SDK
             </Link>
 
           {phase !== "input" && (
@@ -398,7 +408,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  What do you want to build?
+                  What do you need to procure?
                 </motion.h2>
                 <motion.p
                   className="text-lg"
@@ -407,7 +417,7 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.1 }}
                 >
-                  Describe your project and let AI agents handle procurement
+                  Describe your requirements and let AI agents coordinate your supply chain
                 </motion.p>
               </div>
 
@@ -551,7 +561,7 @@ export default function Home() {
                       <strong>Error:</strong> {error}
                     </p>
                     <p className="text-xs mt-1" style={{ color: '#dc2626', opacity: 0.7 }}>
-                      Make sure the backend server is running at localhost:8000
+                      Please try again or check the connection
                     </p>
                   </motion.div>
                 </div>

@@ -1,5 +1,5 @@
 /**
- * PACT API Client
+ * MURA API Client
  * Connects frontend to Next.js API routes (which proxy to FastAPI backend)
  */
 

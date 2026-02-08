@@ -37,7 +37,7 @@ interface AgentDetailPanelProps {
 
 const agentDescriptions: Record<AgentType, { title: string; description: string }> = {
   orchestrator: {
-    title: "PACT Orchestrator",
+    title: "MURA Orchestrator",
     description: "Central coordinator managing the procurement workflow"
   },
   supplier: {
