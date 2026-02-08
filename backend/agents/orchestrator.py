@@ -109,10 +109,29 @@ def generate_bom_with_llm(user_request: str) -> dict:
     """
     llm = get_llm(temperature=0)
 
-    # Available categories that our suppliers can fulfill
+    # Available parts from our actual suppliers
+    available_parts = [
+        # Drone parts
+        "brushless_motor", "esc", "flight_controller", "carbon_frame", "battery",
+        "propeller_set", "vtx", "camera", "receiver", "antenna", "gps_module",
+        # Electronics
+        "temperature_sensor", "humidity_sensor", "pressure_sensor", "esp32_module",
+        "arduino_nano", "raspberry_pi_pico", "oled_display",
+        # Motors
+        "stepper_nema17", "stepper_nema23", "servo_mg996r", "dc_motor_12v",
+        # Keyboard
+        "cherry_mx_red", "cherry_mx_brown", "pbt_keycaps", "aluminum_case_60", "pcb_hotswap_60",
+        # 3D Printing
+        "pla_filament_1kg", "petg_filament_1kg", "hotend_v6", "heated_bed_300",
+        # LED
+        "led_strip_5050", "led_strip_ws2812b", "led_driver_100w",
+        # Solar
+        "solar_panel_100w", "mppt_controller_60a", "lifepo4_battery_100ah",
+    ]
+
     available_categories = [
-        "electronics", "propulsion", "frame", "power", "fpv",
-        "accessories", "mechanical", "structural", "components"
+        "electronics", "propulsion", "frame", "power", "fpv", "sensors",
+        "microcontrollers", "motors", "switches", "keycaps", "filament", "led", "solar"
     ]
 
     prompt = f"""You are a procurement assistant. Generate a Bill of Materials (BOM) for the following request:
@@ -134,10 +153,11 @@ Return ONLY valid JSON in this exact format (no markdown, no explanation):
 
 Rules:
 - Generate 3-8 realistic components for the product
-- Categories must be one of: {', '.join(available_categories)}
-- part_name should be lowercase with underscores (e.g., "main_switch", "led_strip")
+- IMPORTANT: Use these exact part names when applicable: {', '.join(available_parts[:20])}
+- Categories should be one of: {', '.join(available_categories)}
+- part_name should be lowercase with underscores
 - quantity should be realistic (1-10 typically)
-- Be creative but realistic for the product type"""
+- For drones: use brushless_motor, esc, flight_controller, carbon_frame, battery, propeller_set, vtx, camera"""
 
     response = llm.invoke([HumanMessage(content=prompt)])
 
@@ -305,13 +325,31 @@ I'd like to request a {discount_ask}% discount on this order.
         quoted_items = []
         for item in items:
             part_name = item.get("part_name", "")
+            category = item.get("category", "")
             quantity = item.get("quantity", 1)
+
+            # Try exact match first
+            matched_key = None
             if part_name in catalog:
-                unit_price = catalog[part_name].get("unit_price", 0)
+                matched_key = part_name
+            else:
+                # Try partial match on part_name or category
+                for cat_key, cat_item in catalog.items():
+                    cat_category = cat_item.get("category", "")
+                    # Match by category or if part name contains catalog key or vice versa
+                    if (cat_category == category or
+                        part_name in cat_key or
+                        cat_key in part_name or
+                        any(word in cat_key for word in part_name.split("_"))):
+                        matched_key = cat_key
+                        break
+
+            if matched_key:
+                unit_price = catalog[matched_key].get("unit_price", 0)
                 item_total = unit_price * quantity
                 total_cost += item_total
                 quoted_items.append({
-                    "part_name": part_name,
+                    "part_name": catalog[matched_key].get("part_name", matched_key),
                     "quantity": quantity,
                     "unit_price": unit_price,
                     "total": item_total,
