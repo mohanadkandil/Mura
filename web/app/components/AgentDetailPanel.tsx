@@ -14,6 +14,7 @@ import {
   MessageSquare,
   Zap
 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { AgentType, AgentStatus } from "./AgentNode";
 
 interface AgentDetailPanelProps {
@@ -223,15 +224,29 @@ export function AgentDetailPanel({ agent, onClose, logs }: AgentDetailPanelProps
                         <p className="text-sm" style={{ color: '#001858' }}>{log.message}</p>
                         {log.details && (
                           <div
-                            className="mt-2 p-2 rounded-lg text-xs"
+                            className="mt-2 p-3 rounded-lg text-xs prose prose-sm max-w-none"
                             style={{
                               background: '#f3d2c1',
                               color: '#001858',
                               border: '1px solid #001858'
                             }}
                           >
-                            <p className="font-bold mb-1">Details:</p>
-                            <p className="whitespace-pre-wrap">{log.details}</p>
+                            <ReactMarkdown
+                              components={{
+                                h1: ({ children }) => <h1 className="text-sm font-bold mb-2 mt-0" style={{ color: '#001858' }}>{children}</h1>,
+                                h2: ({ children }) => <h2 className="text-sm font-bold mb-2 mt-2" style={{ color: '#001858' }}>{children}</h2>,
+                                h3: ({ children }) => <h3 className="text-xs font-bold mb-1 mt-2" style={{ color: '#001858' }}>{children}</h3>,
+                                h4: ({ children }) => <h4 className="text-xs font-semibold mb-1 mt-2" style={{ color: '#001858' }}>{children}</h4>,
+                                p: ({ children }) => <p className="text-xs mb-2 leading-relaxed" style={{ color: '#172c66' }}>{children}</p>,
+                                ul: ({ children }) => <ul className="text-xs list-disc pl-4 mb-2 space-y-1">{children}</ul>,
+                                ol: ({ children }) => <ol className="text-xs list-decimal pl-4 mb-2 space-y-1">{children}</ol>,
+                                li: ({ children }) => <li className="text-xs" style={{ color: '#172c66' }}>{children}</li>,
+                                strong: ({ children }) => <strong className="font-bold" style={{ color: '#001858' }}>{children}</strong>,
+                                em: ({ children }) => <em className="italic">{children}</em>,
+                              }}
+                            >
+                              {log.details}
+                            </ReactMarkdown>
                           </div>
                         )}
                         <p className="text-xs mt-1" style={{ color: '#172c66', opacity: 0.6 }}>
