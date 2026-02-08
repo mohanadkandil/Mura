@@ -772,15 +772,27 @@ async def run_procurement_streaming(
     state.update(discover_result)
     discovered = state.get("discovered_suppliers", [])
 
-    # Yield each discovered supplier
-    for supplier in discovered:
+    # Handle no suppliers found
+    if not discovered:
         yield {
             "type": "step",
             "phase": "discovery",
-            "agent": f"supplier-{supplier['agent_id']}",
-            "message": f"Found: {supplier['name']} ({supplier.get('region', 'Unknown')})"
+            "agent": "supplier-none",
+            "message": "No suppliers found in registry for these components",
+            "status": "error"
         }
         await asyncio.sleep(0.2)
+    else:
+        # Yield each discovered supplier
+        for supplier in discovered:
+            yield {
+                "type": "step",
+                "phase": "discovery",
+                "agent": f"supplier-{supplier['agent_id']}",
+                "message": f"Found: {supplier['name']} ({supplier.get('region', 'Unknown')})",
+                "status": "success"
+            }
+            await asyncio.sleep(0.2)
 
     # Step 4: Request quotes
     yield {"type": "step", "phase": "quoting", "agent": "orchestrator", "message": f"Requesting quotes from {len(discovered)} suppliers..."}
@@ -799,14 +811,16 @@ async def run_procurement_streaming(
                 "type": "step",
                 "phase": "quoting",
                 "agent": f"supplier-{quote.get('supplier_id', 'unknown')}",
-                "message": f"{supplier_name}: €{total:.2f}"
+                "message": f"{supplier_name}: €{total:.2f}",
+                "status": "success"
             }
         else:
             yield {
                 "type": "step",
                 "phase": "quoting",
                 "agent": f"supplier-{quote.get('supplier_id', 'unknown')}",
-                "message": f"Quote failed"
+                "message": f"Quote failed: {quote.get('error', 'Unknown error')[:50]}",
+                "status": "error"
             }
         await asyncio.sleep(0.3)
 
@@ -839,7 +853,8 @@ async def run_procurement_streaming(
             "phase": "compliance",
             "agent": "compliance",
             "message": f"{result.get('supplier_id', 'Unknown')}: {status_msg}",
-            "details": summary[:300] if summary else None  # Include detailed assessment
+            "details": summary[:300] if summary else None,
+            "status": "success" if passed else "warning" if warnings > 0 else "error"
         }
         await asyncio.sleep(0.3)
 

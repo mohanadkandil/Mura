@@ -62,6 +62,10 @@ function getAgentInfo(agentName: string, supplierCount: { count: number }): Agen
   if (lower.includes("compliance") || lower === "compliance") {
     return { id: "compliance", type: "compliance", name: "Compliance Agent" };
   }
+  // Handle "no supplier found" case
+  if (lower === "supplier-none") {
+    return { id: "supplier-none", type: "supplier", name: "No Suppliers" };
+  }
   if (lower.includes("supplier") || lower.includes("droneparts") || lower.includes("shenzhen") || lower.includes("techparts")) {
     // Extract supplier ID from the agent name (e.g., "supplier-droneparts-eu" -> "droneparts-eu")
     const supplierId = agentName.replace(/^supplier-/, "");
@@ -211,18 +215,33 @@ export default function Home() {
 
                 setPhase(stepPhase);
 
+                // Determine agent status from backend status field
+                let agentStatus: "idle" | "thinking" | "success" | "warning" | "error" = "thinking";
+                let logType: "info" | "thinking" | "success" | "warning" | "error" = "thinking";
+
+                if (data.status === "error") {
+                  agentStatus = "error";
+                  logType = "error";
+                } else if (data.status === "warning") {
+                  agentStatus = "warning";
+                  logType = "warning";
+                } else if (data.status === "success") {
+                  agentStatus = "success";
+                  logType = "success";
+                }
+
                 // Add agent if not already in network
                 addAgent({ ...agentInfo, status: "idle" });
 
-                // Update agent with current thought
+                // Update agent with current thought and status
                 setTimeout(() => {
                   updateAgent(agentInfo.id, {
-                    status: "thinking",
+                    status: agentStatus,
                     thought: data.message,
                   });
 
                   // Pass details if available (e.g., compliance assessment details)
-                  addLog(agentInfo.id, data.message, "thinking", data.details);
+                  addLog(agentInfo.id, data.message, logType, data.details);
 
                   if (agentInfo.id !== "orchestrator") {
                     setActiveConnections([{ from: "orchestrator", to: agentInfo.id }]);
@@ -232,10 +251,10 @@ export default function Home() {
                 // Final result received
                 const result = data.data;
 
-                // Mark all agents as successful
+                // Mark agents as successful, but preserve error/warning states
                 setAgents(prev => prev.map(a => ({
                   ...a,
-                  status: "success",
+                  status: a.status === "error" ? "error" : a.status === "warning" ? "warning" : "success",
                   thought: undefined,
                 })));
 

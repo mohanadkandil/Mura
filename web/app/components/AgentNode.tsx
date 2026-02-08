@@ -10,7 +10,8 @@ import {
   Check,
   Loader2,
   AlertTriangle,
-  GripVertical
+  GripVertical,
+  X
 } from "lucide-react";
 
 export type AgentStatus = "idle" | "thinking" | "success" | "warning" | "error";
@@ -142,6 +143,9 @@ export function AgentNode({
                 {status === "warning" && (
                   <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: '#f59e0b' }} />
                 )}
+                {status === "error" && (
+                  <X className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: '#ef4444' }} />
+                )}
                 <span className="leading-tight font-medium">{thought}</span>
               </div>
             </div>
@@ -249,6 +253,14 @@ export function AgentNode({
             animate={{ opacity: 1 }}
           />
         )}
+        {status === "error" && (
+          <motion.div
+            className="absolute inset-0 rounded-full"
+            style={{ background: 'rgba(239, 68, 68, 0.3)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          />
+        )}
 
         {/* Icon */}
         <Icon
@@ -280,6 +292,9 @@ export function AgentNode({
           )}
           {status === "warning" && (
             <AlertTriangle className="w-3 h-3" style={{ color: '#001858' }} />
+          )}
+          {status === "error" && (
+            <X className="w-3 h-3" style={{ color: '#fff' }} />
           )}
         </motion.div>
       </motion.div>
