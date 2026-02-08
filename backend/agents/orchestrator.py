@@ -264,6 +264,10 @@ def _get_single_quote(supplier: dict, items: list, deadline_days: int, budget: f
         # Get RL-suggested discount to ask for
         discount_ask, rl_reason = bandit.choose_discount(supplier_id)
 
+        # Load supplier catalog to calculate prices
+        supplier_data = load_supply_chain_data()["suppliers"].get(supplier_id, {})
+        catalog = supplier_data.get("catalog", {})
+
         # Create supplier agent
         agent = create_supplier_agent(supplier_id)
 
@@ -296,8 +300,29 @@ I'd like to request a {discount_ask}% discount on this order.
         final_message = result["messages"][-1]
         response_text = final_message.content if hasattr(final_message, "content") else str(final_message)
 
+        # Calculate total cost from catalog
+        total_cost = 0.0
+        quoted_items = []
+        for item in items:
+            part_name = item.get("part_name", "")
+            quantity = item.get("quantity", 1)
+            if part_name in catalog:
+                unit_price = catalog[part_name].get("unit_price", 0)
+                item_total = unit_price * quantity
+                total_cost += item_total
+                quoted_items.append({
+                    "part_name": part_name,
+                    "quantity": quantity,
+                    "unit_price": unit_price,
+                    "total": item_total,
+                })
+
+        # Apply estimated discount
+        estimated_discount = min(discount_ask * 0.6, supplier_data.get("max_discount_pct", 10))
+        discount_amount = total_cost * (estimated_discount / 100)
+        final_total = total_cost - discount_amount
+
         # Record for RL learning
-        estimated_discount = min(discount_ask * 0.6, 25)
         bandit.record_outcome(
             supplier_id=supplier_id,
             discount_asked=discount_ask,
@@ -305,13 +330,17 @@ I'd like to request a {discount_ask}% discount on this order.
             decision="COUNTER",
         )
 
-        memory.log_activity(f"Got quote from {supplier['name']}")
+        memory.log_activity(f"Got quote from {supplier['name']}: €{final_total:.2f}")
 
         return {
             "supplier_id": supplier_id,
             "supplier_name": supplier["name"],
             "region": supplier.get("region"),
-            "items": items,
+            "items": quoted_items,
+            "subtotal": total_cost,
+            "discount_pct": estimated_discount,
+            "discount_amount": discount_amount,
+            "total": final_total,
             "discount_asked": discount_ask,
             "response": response_text,
             "timestamp": datetime.now().isoformat(),
