@@ -9,7 +9,8 @@ import {
   RotateCcw,
   ArrowRight,
   Globe,
-  AlertCircle
+  AlertCircle,
+  Github
 } from "lucide-react";
 import Link from "next/link";
 import { AgentNetwork, Agent } from "./components/AgentNetwork";
@@ -380,6 +381,19 @@ export default function Home() {
             >
               About
             </Link>
+            <a
+              href="https://github.com/mohanadkandil"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg transition-all hover:-translate-y-0.5"
+              style={{
+                background: '#001858',
+                color: '#fef6e4',
+                border: '2px solid #001858',
+              }}
+            >
+              <Github className="w-4 h-4" />
+            </a>
 
           {phase !== "input" && (
               <motion.button
