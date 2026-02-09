@@ -244,3 +244,13 @@ body {
   border-right: 8px solid transparent;
   border-top: 8px solid var(--bg-card);
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

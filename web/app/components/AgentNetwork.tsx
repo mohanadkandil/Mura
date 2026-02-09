@@ -21,16 +21,22 @@ interface AgentNetworkProps {
   onAgentClick?: (agent: Agent) => void;
 }
 
-// Base positions
-const BASE_POSITIONS: Record<string, { x: number; y: number }> = {
-  orchestrator: { x: 400, y: 80 },
-  logistics: { x: 250, y: 450 },
-  compliance: { x: 550, y: 450 },
-};
-
-// Calculate dynamic positions based on agents
-function calculatePositions(agents: Agent[]): Record<string, { x: number; y: number }> {
+// Calculate dynamic positions based on agents and container size
+function calculatePositions(agents: Agent[], isMobile: boolean = false): Record<string, { x: number; y: number }> {
   const positions: Record<string, { x: number; y: number }> = {};
+
+  // Adjust base positions for mobile
+  const centerX = isMobile ? 150 : 400;
+  const baseY = isMobile ? 60 : 80;
+  const supplierY = isMobile ? 180 : 280;
+  const bottomY = isMobile ? 300 : 450;
+  const maxWidth = isMobile ? 320 : 800;
+
+  const BASE_POSITIONS: Record<string, { x: number; y: number }> = {
+    orchestrator: { x: centerX, y: baseY },
+    logistics: { x: isMobile ? 80 : 250, y: bottomY },
+    compliance: { x: isMobile ? 220 : 550, y: bottomY },
+  };
 
   // Count suppliers to distribute them evenly
   const suppliers = agents.filter(a => a.type === "supplier");
@@ -40,20 +46,30 @@ function calculatePositions(agents: Agent[]): Record<string, { x: number; y: num
     if (BASE_POSITIONS[agent.id]) {
       positions[agent.id] = BASE_POSITIONS[agent.id];
     } else if (agent.type === "supplier") {
-      // Distribute suppliers in a row
+      // Distribute suppliers in a row/grid
       const supplierIndex = suppliers.findIndex(s => s.id === agent.id);
-      const spacing = 800 / (supplierCount + 1);
-      positions[agent.id] = {
-        x: spacing * (supplierIndex + 1) - 40,
-        y: 280,
-      };
+      if (isMobile) {
+        // Grid layout for mobile (2 columns)
+        const col = supplierIndex % 2;
+        const row = Math.floor(supplierIndex / 2);
+        positions[agent.id] = {
+          x: col === 0 ? 80 : 220,
+          y: supplierY + row * 80,
+        };
+      } else {
+        const spacing = maxWidth / (supplierCount + 1);
+        positions[agent.id] = {
+          x: spacing * (supplierIndex + 1) - 40,
+          y: supplierY,
+        };
+      }
     } else if (agent.type === "logistics") {
-      positions[agent.id] = { x: 250, y: 450 };
+      positions[agent.id] = BASE_POSITIONS.logistics;
     } else if (agent.type === "compliance") {
-      positions[agent.id] = { x: 550, y: 450 };
+      positions[agent.id] = BASE_POSITIONS.compliance;
     } else {
       // Default position for unknown types
-      positions[agent.id] = { x: 400, y: 280 };
+      positions[agent.id] = { x: centerX, y: supplierY };
     }
   });
 
@@ -62,29 +78,42 @@ function calculatePositions(agents: Agent[]): Record<string, { x: number; y: num
 
 export function AgentNetwork({ agents, activeConnections, phase, onAgentClick }: AgentNetworkProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Calculate base positions based on current agents
-  const basePositions = useMemo(() => calculatePositions(agents), [agents]);
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Calculate base positions based on current agents and screen size
+  const basePositions = useMemo(() => calculatePositions(agents, isMobile), [agents, isMobile]);
 
   const [positions, setPositions] = useState<Record<string, { x: number; y: number }>>(basePositions);
   const [dragOffsets, setDragOffsets] = useState<Record<string, { x: number; y: number }>>({});
 
-  // Update positions when agents change
+  // Update positions when agents change or screen size changes
   useEffect(() => {
     setPositions(prev => {
       const newPositions = { ...basePositions };
-      // Preserve drag offsets for existing agents
-      Object.keys(dragOffsets).forEach(id => {
-        if (newPositions[id] && dragOffsets[id]) {
-          newPositions[id] = {
-            x: basePositions[id].x + dragOffsets[id].x,
-            y: basePositions[id].y + dragOffsets[id].y,
-          };
-        }
-      });
+      // Preserve drag offsets for existing agents (only on desktop)
+      if (!isMobile) {
+        Object.keys(dragOffsets).forEach(id => {
+          if (newPositions[id] && dragOffsets[id]) {
+            newPositions[id] = {
+              x: basePositions[id].x + dragOffsets[id].x,
+              y: basePositions[id].y + dragOffsets[id].y,
+            };
+          }
+        });
+      }
       return newPositions;
     });
-  }, [basePositions, dragOffsets]);
+  }, [basePositions, dragOffsets, isMobile]);
 
   // Get node center for connection lines
   const getNodeCenter = useCallback((id: string, type: AgentType) => {
@@ -121,7 +150,7 @@ export function AgentNetwork({ agents, activeConnections, phase, onAgentClick }:
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[600px] overflow-hidden"
+      className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden"
       style={{ background: '#fef6e4' }}
     >
       {/* Background grid */}
@@ -132,65 +161,71 @@ export function AgentNetwork({ agents, activeConnections, phase, onAgentClick }:
             linear-gradient(to right, #001858 1px, transparent 1px),
             linear-gradient(to bottom, #001858 1px, transparent 1px)
           `,
-          backgroundSize: "50px 50px",
+          backgroundSize: isMobile ? "30px 30px" : "50px 50px",
           opacity: 0.05,
         }}
       />
 
-      {/* Decorative circles */}
-      <motion.div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: 200,
-          height: 200,
-          background: 'rgba(139, 211, 221, 0.15)',
-          left: 50,
-          top: 100,
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: 150,
-          height: 150,
-          background: 'rgba(245, 130, 174, 0.15)',
-          right: 80,
-          bottom: 150,
-        }}
-        animate={{
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
+      {/* Decorative circles - hide on mobile */}
+      {!isMobile && (
+        <>
+          <motion.div
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: 200,
+              height: 200,
+              background: 'rgba(139, 211, 221, 0.15)',
+              left: 50,
+              top: 100,
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: 150,
+              height: 150,
+              background: 'rgba(245, 130, 174, 0.15)',
+              right: 80,
+              bottom: 150,
+            }}
+            animate={{
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+        </>
+      )}
 
-      {/* Drag hint */}
-      <motion.div
-        className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-        style={{
-          background: '#8bd3dd',
-          border: '2px solid #001858',
-          color: '#001858',
-        }}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <Move className="w-3 h-3" />
-        Drag nodes to rearrange
-      </motion.div>
+      {/* Drag hint - hide on mobile */}
+      {!isMobile && (
+        <motion.div
+          className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
+          style={{
+            background: '#8bd3dd',
+            border: '2px solid #001858',
+            color: '#001858',
+          }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Move className="w-3 h-3" />
+          Drag nodes to rearrange
+        </motion.div>
+      )}
 
       {/* Draw connections */}
       {agents.map((agent) => {
@@ -236,16 +271,16 @@ export function AgentNetwork({ agents, activeConnections, phase, onAgentClick }:
 
       {/* Phase indicator */}
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <div
-          className="rounded-full px-6 py-2 text-sm font-semibold"
+          className="rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold"
           style={{
             background: '#f3d2c1',
             border: '2px solid #001858',
-            boxShadow: '3px 3px 0 #001858',
+            boxShadow: '2px 2px 0 #001858',
             color: '#001858',
           }}
         >

@@ -51,37 +51,37 @@ export function LogPanel({ logs }: LogPanelProps) {
 
   return (
     <div
-      className="rounded-2xl overflow-hidden h-full flex flex-col"
+      className="rounded-xl sm:rounded-2xl overflow-hidden h-full flex flex-col"
       style={{
         background: '#fef6e4',
         border: '2px solid #001858',
-        boxShadow: '4px 4px 0 #001858',
+        boxShadow: '3px 3px 0 #001858',
       }}
     >
       <div
-        className="px-4 py-3 flex items-center gap-2"
+        className="px-3 sm:px-4 py-2 sm:py-3 flex items-center gap-2"
         style={{
           borderBottom: '2px solid #001858',
           background: '#f3d2c1',
         }}
       >
-        <Bot className="w-5 h-5" style={{ color: '#001858' }} />
-        <span className="text-sm font-bold" style={{ color: '#001858' }}>Agent Activity</span>
+        <Bot className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#001858' }} />
+        <span className="text-xs sm:text-sm font-bold" style={{ color: '#001858' }}>Agent Activity</span>
         <span
-          className="text-xs ml-auto px-2 py-0.5 rounded-full font-medium"
+          className="text-[10px] sm:text-xs ml-auto px-1.5 sm:px-2 py-0.5 rounded-full font-medium"
           style={{
             background: '#8bd3dd',
             color: '#001858',
             border: '1px solid #001858',
           }}
         >
-          {logs.length} events
+          {logs.length}
         </span>
       </div>
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto p-4 space-y-3"
+        className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-2 sm:space-y-3"
       >
         <AnimatePresence mode="popLayout">
           {logs.map((log) => (
@@ -91,7 +91,7 @@ export function LogPanel({ logs }: LogPanelProps) {
               animate={{ opacity: 1, x: 0, height: "auto" }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="flex gap-3 p-3 rounded-xl"
+              className="flex gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg sm:rounded-xl"
               style={{
                 background: '#fff',
                 border: '2px solid #001858',
@@ -102,18 +102,18 @@ export function LogPanel({ logs }: LogPanelProps) {
                 {getIcon(log.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-baseline gap-2">
+                <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap">
                   <span
-                    className="text-xs font-bold"
+                    className="text-[10px] sm:text-xs font-bold"
                     style={{ color: getAgentColor(log.agent) }}
                   >
                     {log.agent}
                   </span>
-                  <span className="text-[10px]" style={{ color: '#172c66', opacity: 0.6 }}>
+                  <span className="text-[9px] sm:text-[10px]" style={{ color: '#172c66', opacity: 0.6 }}>
                     {log.timestamp.toLocaleTimeString()}
                   </span>
                 </div>
-                <p className="text-sm mt-0.5 leading-relaxed" style={{ color: '#172c66' }}>
+                <p className="text-xs sm:text-sm mt-0.5 leading-relaxed" style={{ color: '#172c66' }}>
                   {log.message}
                 </p>
               </div>

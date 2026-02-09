@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
-import { RefObject } from "react";
+import { RefObject, useState, useEffect } from "react";
 import {
   Truck,
   Shield,
@@ -38,21 +38,25 @@ const agentConfig = {
     icon: Brain,
     bg: "#f582ae",
     size: 100,
+    mobileSize: 70,
   },
   supplier: {
     icon: Package,
     bg: "#8bd3dd",
     size: 80,
+    mobileSize: 55,
   },
   logistics: {
     icon: Truck,
     bg: "#f59e0b",
     size: 80,
+    mobileSize: 55,
   },
   compliance: {
     icon: Shield,
     bg: "#f3d2c1",
     size: 80,
+    mobileSize: 55,
   },
 };
 
@@ -78,9 +82,19 @@ export function AgentNode({
   containerRef,
   onClick
 }: AgentNodeProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const config = agentConfig[type];
   const Icon = config.icon;
   const statusCfg = statusConfig[status];
+  const size = isMobile ? config.mobileSize : config.size;
 
   const handleDrag = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     onDrag?.({ offset: info.offset });
@@ -122,7 +136,7 @@ export function AgentNode({
             initial={{ opacity: 0, y: 10, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.8 }}
-            className="absolute -top-20 left-1/2 -translate-x-1/2 w-52 z-30 pointer-events-none"
+            className={`absolute left-1/2 -translate-x-1/2 z-30 pointer-events-none ${isMobile ? '-top-16 w-40' : '-top-20 w-52'}`}
           >
             <div
               className="rounded-xl px-3 py-2 text-xs relative"
@@ -168,9 +182,9 @@ export function AgentNode({
           <motion.div
             className="absolute rounded-full pointer-events-none"
             style={{
-              width: config.size + 30,
-              height: config.size + 30,
-              border: `3px solid ${config.bg}`,
+              width: size + (isMobile ? 20 : 30),
+              height: size + (isMobile ? 20 : 30),
+              border: `${isMobile ? 2 : 3}px solid ${config.bg}`,
             }}
             animate={{
               scale: [1, 1.6],
@@ -185,9 +199,9 @@ export function AgentNode({
           <motion.div
             className="absolute rounded-full pointer-events-none"
             style={{
-              width: config.size + 30,
-              height: config.size + 30,
-              border: `3px solid ${config.bg}`,
+              width: size + (isMobile ? 20 : 30),
+              height: size + (isMobile ? 20 : 30),
+              border: `${isMobile ? 2 : 3}px solid ${config.bg}`,
             }}
             animate={{
               scale: [1, 1.6],
@@ -207,13 +221,13 @@ export function AgentNode({
       <motion.div
         className="relative rounded-full flex items-center justify-center cursor-pointer"
         style={{
-          width: config.size,
-          height: config.size,
+          width: size,
+          height: size,
           background: config.bg,
-          border: '3px solid #001858',
+          border: `${isMobile ? 2 : 3}px solid #001858`,
           boxShadow: status === "thinking"
-            ? `5px 5px 0 #001858`
-            : `4px 4px 0 #001858`,
+            ? `${isMobile ? 3 : 5}px ${isMobile ? 3 : 5}px 0 #001858`
+            : `${isMobile ? 2 : 4}px ${isMobile ? 2 : 4}px 0 #001858`,
         }}
         animate={statusCfg.pulse ? {
           scale: [1, 1.05, 1],
@@ -265,13 +279,13 @@ export function AgentNode({
         {/* Icon */}
         <Icon
           style={{ color: '#001858' }}
-          size={config.size * 0.4}
+          size={size * 0.4}
           strokeWidth={2}
         />
 
         {/* Status indicator */}
         <motion.div
-          className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center"
+          className={`absolute -bottom-1 -right-1 rounded-full flex items-center justify-center ${isMobile ? 'w-5 h-5' : 'w-7 h-7'}`}
           style={{
             background: status === "thinking" ? "#8bd3dd" :
               status === "success" ? "#22c55e" :
@@ -279,29 +293,29 @@ export function AgentNode({
               status === "error" ? "#ef4444" :
               "#f3d2c1",
             border: '2px solid #001858',
-            boxShadow: '2px 2px 0 #001858',
+            boxShadow: `${isMobile ? 1 : 2}px ${isMobile ? 1 : 2}px 0 #001858`,
           }}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
           {status === "thinking" && (
-            <Loader2 className="w-3 h-3 animate-spin" style={{ color: '#001858' }} />
+            <Loader2 className={`${isMobile ? 'w-2 h-2' : 'w-3 h-3'} animate-spin`} style={{ color: '#001858' }} />
           )}
           {status === "success" && (
-            <Check className="w-3 h-3" style={{ color: '#fff' }} />
+            <Check className={`${isMobile ? 'w-2 h-2' : 'w-3 h-3'}`} style={{ color: '#fff' }} />
           )}
           {status === "warning" && (
-            <AlertTriangle className="w-3 h-3" style={{ color: '#001858' }} />
+            <AlertTriangle className={`${isMobile ? 'w-2 h-2' : 'w-3 h-3'}`} style={{ color: '#001858' }} />
           )}
           {status === "error" && (
-            <X className="w-3 h-3" style={{ color: '#fff' }} />
+            <X className={`${isMobile ? 'w-2 h-2' : 'w-3 h-3'}`} style={{ color: '#fff' }} />
           )}
         </motion.div>
       </motion.div>
 
       {/* Name label */}
       <motion.div
-        className="mt-3 text-sm font-semibold pointer-events-none"
+        className={`mt-2 sm:mt-3 font-semibold pointer-events-none ${isMobile ? 'text-xs' : 'text-sm'}`}
         style={{ color: '#001858' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -328,10 +328,10 @@ export default function Home() {
     <div className="min-h-screen" style={{ background: '#fef6e4' }}>
       {/* Header */}
       <header style={{ borderBottom: '2px solid #001858' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
             <motion.div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center"
               style={{
                 background: '#f582ae',
                 border: '2px solid #001858',
@@ -339,29 +339,29 @@ export default function Home() {
               }}
               whileHover={{ scale: 1.05, rotate: 5 }}
             >
-              <Sparkles className="w-5 h-5" style={{ color: '#001858' }} />
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#001858' }} />
             </motion.div>
             <div>
-              <h1 className="text-xl font-bold" style={{ color: '#001858' }}>MURA</h1>
-              <p className="text-xs" style={{ color: '#172c66' }}>Supply Chain Agent Network</p>
+              <h1 className="text-lg sm:text-xl font-bold" style={{ color: '#001858' }}>MURA</h1>
+              <p className="text-xs hidden sm:block" style={{ color: '#172c66' }}>Supply Chain Agent Network</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/registry"
-              className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
+              className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-medium px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all hover:-translate-y-0.5"
               style={{
                 color: '#001858',
                 border: '2px solid #001858',
               }}
             >
-              <Globe className="w-4 h-4" />
-              Registry
+              <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Registry</span>
             </Link>
             <Link
               href="/docs"
-              className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
+              className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-medium px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all hover:-translate-y-0.5"
               style={{
                 color: '#001858',
                 border: '2px solid #001858',
@@ -369,28 +369,39 @@ export default function Home() {
             >
               SDK
             </Link>
+            <Link
+              href="/about"
+              className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-medium px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all hover:-translate-y-0.5"
+              style={{
+                background: '#f582ae',
+                color: '#001858',
+                border: '2px solid #001858',
+              }}
+            >
+              About
+            </Link>
 
           {phase !== "input" && (
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 onClick={handleReset}
-                className="flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+                className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
                 style={{
                   color: '#001858',
                   border: '2px solid #001858',
                   boxShadow: '2px 2px 0 #001858',
                 }}
               >
-                <RotateCcw className="w-4 h-4" />
-                New Request
+                <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">New Request</span>
               </motion.button>
             )}
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
         <AnimatePresence mode="wait">
           {phase === "input" ? (
             <motion.div
@@ -398,12 +409,12 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="max-w-2xl mx-auto pt-16"
+              className="max-w-2xl mx-auto pt-8 sm:pt-16"
             >
               {/* Hero */}
-              <div className="text-center mb-12">
+              <div className="text-center mb-8 sm:mb-12">
                 <motion.h2
-                  className="text-5xl font-bold mb-4"
+                  className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-2"
                   style={{ color: '#001858' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -411,7 +422,7 @@ export default function Home() {
                   What do you need to procure?
                 </motion.h2>
                 <motion.p
-                  className="text-lg"
+                  className="text-sm sm:text-lg px-4"
                   style={{ color: '#172c66' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -429,40 +440,40 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
               >
                 <div
-                  className="rounded-2xl overflow-hidden"
+                  className="rounded-xl sm:rounded-2xl overflow-hidden"
                   style={{
                     background: '#fff',
                     border: '3px solid #001858',
-                    boxShadow: '6px 6px 0 #001858',
+                    boxShadow: '4px 4px 0 #001858',
                   }}
                 >
                   <textarea
                     value={request}
                     onChange={(e) => setRequest(e.target.value)}
-                    placeholder="Build me a racing drone for FPV competitions with high-quality motors and carbon fiber frame..."
-                    className="w-full text-lg resize-none focus:outline-none p-6 min-h-[160px]"
+                    placeholder="Build me a racing drone for FPV competitions..."
+                    className="w-full text-base sm:text-lg resize-none focus:outline-none p-4 sm:p-6 min-h-[120px] sm:min-h-[160px]"
                     style={{ color: '#001858', background: 'transparent' }}
                   />
 
                   {/* Bottom bar */}
                   <div
-                    className="flex items-center justify-between px-6 py-4"
+                    className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4"
                     style={{ borderTop: '2px solid #001858', background: '#fef6e4' }}
                   >
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                       {examplePrompts.map((prompt, i) => (
                         <button
                           key={i}
                           type="button"
                           onClick={() => setRequest(prompt)}
-                          className="text-xs px-3 py-1.5 rounded-full font-medium transition-all hover:-translate-y-0.5"
+                          className="text-xs px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-medium transition-all hover:-translate-y-0.5"
                           style={{
                             background: request === prompt ? '#f582ae' : 'transparent',
                             border: '2px solid #001858',
                             color: '#001858',
                           }}
                         >
-                          {prompt.split(' ').slice(0, 3).join(' ')}...
+                          {prompt.split(' ').slice(0, 2).join(' ')}...
                         </button>
                       ))}
                     </div>
@@ -470,7 +481,7 @@ export default function Home() {
                     <motion.button
                       type="submit"
                       disabled={!request.trim()}
-                      className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
                       style={{
                         background: '#f582ae',
                         color: '#001858',
@@ -513,12 +524,12 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-3 gap-6"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6"
             >
               {/* Request summary */}
-              <div className="col-span-3">
+              <div className="col-span-1 lg:col-span-3">
                 <motion.div
-                  className="rounded-xl px-6 py-4 flex items-center gap-4"
+                  className="rounded-xl px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4"
                   style={{
                     background: '#fff',
                     border: '2px solid #001858',
@@ -528,18 +539,18 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <div className="flex-1">
-                    <p className="font-semibold" style={{ color: '#001858' }}>{request}</p>
+                    <p className="font-semibold text-sm sm:text-base" style={{ color: '#001858' }}>{request}</p>
                   </div>
                   {isProcessing && (
                     <div className="flex items-center gap-2">
-                      <Loader2 className="w-5 h-5 animate-spin" style={{ color: '#f582ae' }} />
-                      <span className="text-sm font-medium" style={{ color: '#001858' }}>Processing...</span>
+                      <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" style={{ color: '#f582ae' }} />
+                      <span className="text-xs sm:text-sm font-medium" style={{ color: '#001858' }}>Processing...</span>
                     </div>
                   )}
                   {phase === "error" && (
                     <div className="flex items-center gap-2">
-                      <AlertCircle className="w-5 h-5" style={{ color: '#ef4444' }} />
-                      <span className="text-sm font-medium" style={{ color: '#ef4444' }}>Error occurred</span>
+                      <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#ef4444' }} />
+                      <span className="text-xs sm:text-sm font-medium" style={{ color: '#ef4444' }}>Error occurred</span>
                     </div>
                   )}
                 </motion.div>
@@ -547,9 +558,9 @@ export default function Home() {
 
               {/* Error message */}
               {error && (
-                <div className="col-span-3">
+                <div className="col-span-1 lg:col-span-3">
                   <motion.div
-                    className="rounded-xl px-6 py-4"
+                    className="rounded-xl px-4 sm:px-6 py-3 sm:py-4"
                     style={{
                       background: '#fef2f2',
                       border: '2px solid #ef4444',
@@ -557,7 +568,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
-                    <p className="text-sm" style={{ color: '#dc2626' }}>
+                    <p className="text-xs sm:text-sm" style={{ color: '#dc2626' }}>
                       <strong>Error:</strong> {error}
                     </p>
                     <p className="text-xs mt-1" style={{ color: '#dc2626', opacity: 0.7 }}>
@@ -568,12 +579,12 @@ export default function Home() {
               )}
 
               {/* Agent network */}
-              <div className="col-span-2">
+              <div className="col-span-1 lg:col-span-2 order-2 lg:order-1">
                 <motion.div
-                  className="rounded-2xl overflow-hidden"
+                  className="rounded-xl sm:rounded-2xl overflow-hidden"
                   style={{
-                    border: '3px solid #001858',
-                    boxShadow: '5px 5px 0 #001858',
+                    border: '2px sm:border-3 solid #001858',
+                    boxShadow: '4px 4px 0 #001858',
                   }}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -587,15 +598,15 @@ export default function Home() {
                   />
                 </motion.div>
 
-                <div className="mt-6">
+                <div className="mt-4 sm:mt-6">
                   <ResultCard recommendation={recommendation} visible={showResult} />
                 </div>
               </div>
 
               {/* Log panel */}
-              <div className="col-span-1">
+              <div className="col-span-1 order-1 lg:order-2">
                 <motion.div
-                  className="h-[600px]"
+                  className="h-[300px] sm:h-[400px] lg:h-[600px]"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
