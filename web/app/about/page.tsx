@@ -105,10 +105,10 @@ export default function AboutPage() {
               className="text-base sm:text-lg font-bold"
               style={{ color: "#001858" }}
             >
-              Hacked this in 7 hours
+              Hacked this in 7 hours (while drained)
             </p>
             <p className="text-sm" style={{ color: "#172c66" }}>
-              (approximately 20 vibecodes)
+              (approximately 20% vibecoded)
             </p>
           </motion.div>
 
